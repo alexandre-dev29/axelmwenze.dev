@@ -1,263 +1,507 @@
 # This file was generated based on ".graphqlconfig". Do not edit manually.
 
 schema {
-    query: Query
-    mutation: Mutation
+  query: Query
+  mutation: Mutation
 }
 
-union GenericMorph = I18NLocale | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = About | Brand | Contact | Experience | I18NLocale | Skill | Testimonial | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Work | WorkExperience
+
+type About {
+  Description: String
+  ImageUrl: UploadFileEntityResponse
+  Title: String!
+  createdAt: DateTime
+  publishedAt: DateTime
+  updatedAt: DateTime
+}
+
+type AboutEntity {
+  attributes: About
+  id: ID
+}
+
+type AboutEntityResponse {
+  data: AboutEntity
+}
+
+type AboutEntityResponseCollection {
+  data: [AboutEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type Brand {
+  ImageUrl: UploadFileEntityResponse
+  Name: String
+  createdAt: DateTime
+  publishedAt: DateTime
+  updatedAt: DateTime
+}
+
+type BrandEntity {
+  attributes: Brand
+  id: ID
+}
+
+type BrandEntityResponse {
+  data: BrandEntity
+}
+
+type BrandEntityResponseCollection {
+  data: [BrandEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type Contact {
+  Email: String!
+  Message: String!
+  createdAt: DateTime
+  name: String!
+  publishedAt: DateTime
+  updatedAt: DateTime
+}
+
+type ContactEntity {
+  attributes: Contact
+  id: ID
+}
+
+type ContactEntityResponse {
+  data: ContactEntity
+}
+
+type ContactEntityResponseCollection {
+  data: [ContactEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type Experience {
+  Year: Int!
+  createdAt: DateTime
+  publishedAt: DateTime
+  updatedAt: DateTime
+  work_experience: WorkExperienceEntityResponse
+}
+
+type ExperienceEntity {
+  attributes: Experience
+  id: ID
+}
+
+type ExperienceEntityResponse {
+  data: ExperienceEntity
+}
+
+type ExperienceEntityResponseCollection {
+  data: [ExperienceEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type ExperienceRelationResponseCollection {
+  data: [ExperienceEntity!]!
+}
 
 type I18NLocale {
-    code: String
-    createdAt: DateTime
-    name: String
-    updatedAt: DateTime
+  code: String
+  createdAt: DateTime
+  name: String
+  updatedAt: DateTime
 }
 
 type I18NLocaleEntity {
-    attributes: I18NLocale
-    id: ID
+  attributes: I18NLocale
+  id: ID
 }
 
 type I18NLocaleEntityResponse {
-    data: I18NLocaleEntity
+  data: I18NLocaleEntity
 }
 
 type I18NLocaleEntityResponseCollection {
-    data: [I18NLocaleEntity!]!
-    meta: ResponseCollectionMeta!
+  data: [I18NLocaleEntity!]!
+  meta: ResponseCollectionMeta!
 }
 
 type Mutation {
-    createUploadFile(data: UploadFileInput!): UploadFileEntityResponse
-    createUploadFolder(data: UploadFolderInput!): UploadFolderEntityResponse
-    "Create a new role"
-    createUsersPermissionsRole(data: UsersPermissionsRoleInput!): UsersPermissionsCreateRolePayload
-    "Create a new user"
-    createUsersPermissionsUser(data: UsersPermissionsUserInput!): UsersPermissionsUserEntityResponse!
-    deleteUploadFile(id: ID!): UploadFileEntityResponse
-    deleteUploadFolder(id: ID!): UploadFolderEntityResponse
-    "Delete an existing role"
-    deleteUsersPermissionsRole(id: ID!): UsersPermissionsDeleteRolePayload
-    "Delete an existing user"
-    deleteUsersPermissionsUser(id: ID!): UsersPermissionsUserEntityResponse!
-    "Confirm an email users email address"
-    emailConfirmation(confirmation: String!): UsersPermissionsLoginPayload
-    "Request a reset password token"
-    forgotPassword(email: String!): UsersPermissionsPasswordPayload
-    login(input: UsersPermissionsLoginInput!): UsersPermissionsLoginPayload!
-    multipleUpload(field: String, files: [Upload]!, ref: String, refId: ID): [UploadFileEntityResponse]!
-    "Register a user"
-    register(input: UsersPermissionsRegisterInput!): UsersPermissionsLoginPayload!
-    removeFile(id: ID!): UploadFileEntityResponse
-    "Reset user password. Confirm with a code (resetToken from forgotPassword)"
-    resetPassword(code: String!, password: String!, passwordConfirmation: String!): UsersPermissionsLoginPayload
-    updateFileInfo(id: ID!, info: FileInfoInput): UploadFileEntityResponse!
-    updateUploadFile(data: UploadFileInput!, id: ID!): UploadFileEntityResponse
-    updateUploadFolder(data: UploadFolderInput!, id: ID!): UploadFolderEntityResponse
-    "Update an existing role"
-    updateUsersPermissionsRole(data: UsersPermissionsRoleInput!, id: ID!): UsersPermissionsUpdateRolePayload
-    "Update an existing user"
-    updateUsersPermissionsUser(data: UsersPermissionsUserInput!, id: ID!): UsersPermissionsUserEntityResponse!
-    upload(field: String, file: Upload!, info: FileInfoInput, ref: String, refId: ID): UploadFileEntityResponse!
+  createAbout(data: AboutInput!): AboutEntityResponse
+  createBrand(data: BrandInput!): BrandEntityResponse
+  createContact(data: ContactInput!): ContactEntityResponse
+  createExperience(data: ExperienceInput!): ExperienceEntityResponse
+  createSkill(data: SkillInput!): SkillEntityResponse
+  createTestimonial(data: TestimonialInput!): TestimonialEntityResponse
+  createUploadFile(data: UploadFileInput!): UploadFileEntityResponse
+  createUploadFolder(data: UploadFolderInput!): UploadFolderEntityResponse
+  "Create a new role"
+  createUsersPermissionsRole(data: UsersPermissionsRoleInput!): UsersPermissionsCreateRolePayload
+  "Create a new user"
+  createUsersPermissionsUser(data: UsersPermissionsUserInput!): UsersPermissionsUserEntityResponse!
+  createWork(data: WorkInput!): WorkEntityResponse
+  createWorkExperience(data: WorkExperienceInput!): WorkExperienceEntityResponse
+  deleteAbout(id: ID!): AboutEntityResponse
+  deleteBrand(id: ID!): BrandEntityResponse
+  deleteContact(id: ID!): ContactEntityResponse
+  deleteExperience(id: ID!): ExperienceEntityResponse
+  deleteSkill(id: ID!): SkillEntityResponse
+  deleteTestimonial(id: ID!): TestimonialEntityResponse
+  deleteUploadFile(id: ID!): UploadFileEntityResponse
+  deleteUploadFolder(id: ID!): UploadFolderEntityResponse
+  "Delete an existing role"
+  deleteUsersPermissionsRole(id: ID!): UsersPermissionsDeleteRolePayload
+  "Delete an existing user"
+  deleteUsersPermissionsUser(id: ID!): UsersPermissionsUserEntityResponse!
+  deleteWork(id: ID!): WorkEntityResponse
+  deleteWorkExperience(id: ID!): WorkExperienceEntityResponse
+  "Confirm an email users email address"
+  emailConfirmation(confirmation: String!): UsersPermissionsLoginPayload
+  "Request a reset password token"
+  forgotPassword(email: String!): UsersPermissionsPasswordPayload
+  login(input: UsersPermissionsLoginInput!): UsersPermissionsLoginPayload!
+  multipleUpload(field: String, files: [Upload]!, ref: String, refId: ID): [UploadFileEntityResponse]!
+  "Register a user"
+  register(input: UsersPermissionsRegisterInput!): UsersPermissionsLoginPayload!
+  removeFile(id: ID!): UploadFileEntityResponse
+  "Reset user password. Confirm with a code (resetToken from forgotPassword)"
+  resetPassword(code: String!, password: String!, passwordConfirmation: String!): UsersPermissionsLoginPayload
+  updateAbout(data: AboutInput!, id: ID!): AboutEntityResponse
+  updateBrand(data: BrandInput!, id: ID!): BrandEntityResponse
+  updateContact(data: ContactInput!, id: ID!): ContactEntityResponse
+  updateExperience(data: ExperienceInput!, id: ID!): ExperienceEntityResponse
+  updateFileInfo(id: ID!, info: FileInfoInput): UploadFileEntityResponse!
+  updateSkill(data: SkillInput!, id: ID!): SkillEntityResponse
+  updateTestimonial(data: TestimonialInput!, id: ID!): TestimonialEntityResponse
+  updateUploadFile(data: UploadFileInput!, id: ID!): UploadFileEntityResponse
+  updateUploadFolder(data: UploadFolderInput!, id: ID!): UploadFolderEntityResponse
+  "Update an existing role"
+  updateUsersPermissionsRole(data: UsersPermissionsRoleInput!, id: ID!): UsersPermissionsUpdateRolePayload
+  "Update an existing user"
+  updateUsersPermissionsUser(data: UsersPermissionsUserInput!, id: ID!): UsersPermissionsUserEntityResponse!
+  updateWork(data: WorkInput!, id: ID!): WorkEntityResponse
+  updateWorkExperience(data: WorkExperienceInput!, id: ID!): WorkExperienceEntityResponse
+  upload(field: String, file: Upload!, info: FileInfoInput, ref: String, refId: ID): UploadFileEntityResponse!
 }
 
 type Pagination {
-    page: Int!
-    pageCount: Int!
-    pageSize: Int!
-    total: Int!
+  page: Int!
+  pageCount: Int!
+  pageSize: Int!
+  total: Int!
 }
 
 type Query {
-    i18NLocale(id: ID): I18NLocaleEntityResponse
-    i18NLocales(filters: I18NLocaleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): I18NLocaleEntityResponseCollection
-    me: UsersPermissionsMe
-    uploadFile(id: ID): UploadFileEntityResponse
-    uploadFiles(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileEntityResponseCollection
-    uploadFolder(id: ID): UploadFolderEntityResponse
-    uploadFolders(filters: UploadFolderFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFolderEntityResponseCollection
-    usersPermissionsRole(id: ID): UsersPermissionsRoleEntityResponse
-    usersPermissionsRoles(filters: UsersPermissionsRoleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsRoleEntityResponseCollection
-    usersPermissionsUser(id: ID): UsersPermissionsUserEntityResponse
-    usersPermissionsUsers(filters: UsersPermissionsUserFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsUserEntityResponseCollection
+  about(id: ID): AboutEntityResponse
+  abouts(filters: AboutFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): AboutEntityResponseCollection
+  brand(id: ID): BrandEntityResponse
+  brands(filters: BrandFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): BrandEntityResponseCollection
+  contact(id: ID): ContactEntityResponse
+  contacts(filters: ContactFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): ContactEntityResponseCollection
+  experience(id: ID): ExperienceEntityResponse
+  experiences(filters: ExperienceFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): ExperienceEntityResponseCollection
+  i18NLocale(id: ID): I18NLocaleEntityResponse
+  i18NLocales(filters: I18NLocaleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): I18NLocaleEntityResponseCollection
+  me: UsersPermissionsMe
+  skill(id: ID): SkillEntityResponse
+  skills(filters: SkillFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): SkillEntityResponseCollection
+  testimonial(id: ID): TestimonialEntityResponse
+  testimonials(filters: TestimonialFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): TestimonialEntityResponseCollection
+  uploadFile(id: ID): UploadFileEntityResponse
+  uploadFiles(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileEntityResponseCollection
+  uploadFolder(id: ID): UploadFolderEntityResponse
+  uploadFolders(filters: UploadFolderFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFolderEntityResponseCollection
+  usersPermissionsRole(id: ID): UsersPermissionsRoleEntityResponse
+  usersPermissionsRoles(filters: UsersPermissionsRoleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsRoleEntityResponseCollection
+  usersPermissionsUser(id: ID): UsersPermissionsUserEntityResponse
+  usersPermissionsUsers(filters: UsersPermissionsUserFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsUserEntityResponseCollection
+  work(id: ID): WorkEntityResponse
+  workExperience(id: ID): WorkExperienceEntityResponse
+  workExperiences(filters: WorkExperienceFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): WorkExperienceEntityResponseCollection
+  works(filters: WorkFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): WorkEntityResponseCollection
 }
 
 type ResponseCollectionMeta {
-    pagination: Pagination!
+  pagination: Pagination!
+}
+
+type Skill {
+  BackgroundColor: String
+  ImageUrl: UploadFileEntityResponse
+  Name: String!
+  createdAt: DateTime
+  publishedAt: DateTime
+  updatedAt: DateTime
+}
+
+type SkillEntity {
+  attributes: Skill
+  id: ID
+}
+
+type SkillEntityResponse {
+  data: SkillEntity
+}
+
+type SkillEntityResponseCollection {
+  data: [SkillEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type Testimonial {
+  Compagny: String
+  Feedback: String
+  ImageUrl: UploadFileEntityResponse
+  Name: String!
+  createdAt: DateTime
+  publishedAt: DateTime
+  updatedAt: DateTime
+}
+
+type TestimonialEntity {
+  attributes: Testimonial
+  id: ID
+}
+
+type TestimonialEntityResponse {
+  data: TestimonialEntity
+}
+
+type TestimonialEntityResponseCollection {
+  data: [TestimonialEntity!]!
+  meta: ResponseCollectionMeta!
 }
 
 type UploadFile {
-    alternativeText: String
-    caption: String
-    createdAt: DateTime
-    ext: String
-    formats: JSON
-    hash: String!
-    height: Int
-    mime: String!
-    name: String!
-    previewUrl: String
-    provider: String!
-    provider_metadata: JSON
-    related: [GenericMorph]
-    size: Float!
-    updatedAt: DateTime
-    url: String!
-    width: Int
+  alternativeText: String
+  caption: String
+  createdAt: DateTime
+  ext: String
+  formats: JSON
+  hash: String!
+  height: Int
+  mime: String!
+  name: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  related: [GenericMorph]
+  size: Float!
+  updatedAt: DateTime
+  url: String!
+  width: Int
 }
 
 type UploadFileEntity {
-    attributes: UploadFile
-    id: ID
+  attributes: UploadFile
+  id: ID
 }
 
 type UploadFileEntityResponse {
-    data: UploadFileEntity
+  data: UploadFileEntity
 }
 
 type UploadFileEntityResponseCollection {
-    data: [UploadFileEntity!]!
-    meta: ResponseCollectionMeta!
+  data: [UploadFileEntity!]!
+  meta: ResponseCollectionMeta!
 }
 
 type UploadFileRelationResponseCollection {
-    data: [UploadFileEntity!]!
+  data: [UploadFileEntity!]!
 }
 
 type UploadFolder {
-    children(filters: UploadFolderFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFolderRelationResponseCollection
-    createdAt: DateTime
-    files(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection
-    name: String!
-    parent: UploadFolderEntityResponse
-    path: String!
-    pathId: Int!
-    updatedAt: DateTime
+  children(filters: UploadFolderFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFolderRelationResponseCollection
+  createdAt: DateTime
+  files(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection
+  name: String!
+  parent: UploadFolderEntityResponse
+  path: String!
+  pathId: Int!
+  updatedAt: DateTime
 }
 
 type UploadFolderEntity {
-    attributes: UploadFolder
-    id: ID
+  attributes: UploadFolder
+  id: ID
 }
 
 type UploadFolderEntityResponse {
-    data: UploadFolderEntity
+  data: UploadFolderEntity
 }
 
 type UploadFolderEntityResponseCollection {
-    data: [UploadFolderEntity!]!
-    meta: ResponseCollectionMeta!
+  data: [UploadFolderEntity!]!
+  meta: ResponseCollectionMeta!
 }
 
 type UploadFolderRelationResponseCollection {
-    data: [UploadFolderEntity!]!
+  data: [UploadFolderEntity!]!
 }
 
 type UsersPermissionsCreateRolePayload {
-    ok: Boolean!
+  ok: Boolean!
 }
 
 type UsersPermissionsDeleteRolePayload {
-    ok: Boolean!
+  ok: Boolean!
 }
 
 type UsersPermissionsLoginPayload {
-    jwt: String
-    user: UsersPermissionsMe!
+  jwt: String
+  user: UsersPermissionsMe!
 }
 
 type UsersPermissionsMe {
-    blocked: Boolean
-    confirmed: Boolean
-    email: String
-    id: ID!
-    role: UsersPermissionsMeRole
-    username: String!
+  blocked: Boolean
+  confirmed: Boolean
+  email: String
+  id: ID!
+  role: UsersPermissionsMeRole
+  username: String!
 }
 
 type UsersPermissionsMeRole {
-    description: String
-    id: ID!
-    name: String!
-    type: String
+  description: String
+  id: ID!
+  name: String!
+  type: String
 }
 
 type UsersPermissionsPasswordPayload {
-    ok: Boolean!
+  ok: Boolean!
 }
 
 type UsersPermissionsPermission {
-    action: String!
-    createdAt: DateTime
-    role: UsersPermissionsRoleEntityResponse
-    updatedAt: DateTime
+  action: String!
+  createdAt: DateTime
+  role: UsersPermissionsRoleEntityResponse
+  updatedAt: DateTime
 }
 
 type UsersPermissionsPermissionEntity {
-    attributes: UsersPermissionsPermission
-    id: ID
+  attributes: UsersPermissionsPermission
+  id: ID
 }
 
 type UsersPermissionsPermissionRelationResponseCollection {
-    data: [UsersPermissionsPermissionEntity!]!
+  data: [UsersPermissionsPermissionEntity!]!
 }
 
 type UsersPermissionsRole {
-    createdAt: DateTime
-    description: String
-    name: String!
-    permissions(filters: UsersPermissionsPermissionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsPermissionRelationResponseCollection
-    type: String
-    updatedAt: DateTime
-    users(filters: UsersPermissionsUserFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsUserRelationResponseCollection
+  createdAt: DateTime
+  description: String
+  name: String!
+  permissions(filters: UsersPermissionsPermissionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsPermissionRelationResponseCollection
+  type: String
+  updatedAt: DateTime
+  users(filters: UsersPermissionsUserFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsUserRelationResponseCollection
 }
 
 type UsersPermissionsRoleEntity {
-    attributes: UsersPermissionsRole
-    id: ID
+  attributes: UsersPermissionsRole
+  id: ID
 }
 
 type UsersPermissionsRoleEntityResponse {
-    data: UsersPermissionsRoleEntity
+  data: UsersPermissionsRoleEntity
 }
 
 type UsersPermissionsRoleEntityResponseCollection {
-    data: [UsersPermissionsRoleEntity!]!
-    meta: ResponseCollectionMeta!
+  data: [UsersPermissionsRoleEntity!]!
+  meta: ResponseCollectionMeta!
 }
 
 type UsersPermissionsUpdateRolePayload {
-    ok: Boolean!
+  ok: Boolean!
 }
 
 type UsersPermissionsUser {
-    blocked: Boolean
-    confirmed: Boolean
-    createdAt: DateTime
-    email: String!
-    provider: String
-    role: UsersPermissionsRoleEntityResponse
-    updatedAt: DateTime
-    username: String!
+  blocked: Boolean
+  confirmed: Boolean
+  createdAt: DateTime
+  email: String!
+  provider: String
+  role: UsersPermissionsRoleEntityResponse
+  updatedAt: DateTime
+  username: String!
 }
 
 type UsersPermissionsUserEntity {
-    attributes: UsersPermissionsUser
-    id: ID
+  attributes: UsersPermissionsUser
+  id: ID
 }
 
 type UsersPermissionsUserEntityResponse {
-    data: UsersPermissionsUserEntity
+  data: UsersPermissionsUserEntity
 }
 
 type UsersPermissionsUserEntityResponseCollection {
-    data: [UsersPermissionsUserEntity!]!
-    meta: ResponseCollectionMeta!
+  data: [UsersPermissionsUserEntity!]!
+  meta: ResponseCollectionMeta!
 }
 
 type UsersPermissionsUserRelationResponseCollection {
-    data: [UsersPermissionsUserEntity!]!
+  data: [UsersPermissionsUserEntity!]!
+}
+
+type Work {
+  CodeLink: String
+  Description: String
+  ImageUrl: UploadFileEntityResponse!
+  ProjectLink: String
+  Tags: ENUM_WORK_TAGS
+  Title: String!
+  createdAt: DateTime
+  publishedAt: DateTime
+  updatedAt: DateTime
+}
+
+type WorkEntity {
+  attributes: Work
+  id: ID
+}
+
+type WorkEntityResponse {
+  data: WorkEntity
+}
+
+type WorkEntityResponseCollection {
+  data: [WorkEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type WorkExperience {
+  Compagny: String
+  Description: String
+  Name: String!
+  createdAt: DateTime
+  experiences(filters: ExperienceFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): ExperienceRelationResponseCollection
+  publishedAt: DateTime
+  updatedAt: DateTime
+}
+
+type WorkExperienceEntity {
+  attributes: WorkExperience
+  id: ID
+}
+
+type WorkExperienceEntityResponse {
+  data: WorkExperienceEntity
+}
+
+type WorkExperienceEntityResponseCollection {
+  data: [WorkExperienceEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+enum ENUM_WORK_TAGS {
+  Backend
+  Frontend
+  Fullstack
+  Mobile
+  Other
+}
+
+enum PublicationState {
+  LIVE
+  PREVIEW
 }
 
 "A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar."
@@ -269,337 +513,498 @@ scalar JSON
 "The `Upload` scalar type represents a file upload."
 scalar Upload
 
+input AboutFiltersInput {
+  Description: StringFilterInput
+  Title: StringFilterInput
+  and: [AboutFiltersInput]
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  not: AboutFiltersInput
+  or: [AboutFiltersInput]
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input AboutInput {
+  Description: String
+  ImageUrl: ID
+  Title: String
+  publishedAt: DateTime
+}
+
 input BooleanFilterInput {
-    and: [Boolean]
-    between: [Boolean]
-    contains: Boolean
-    containsi: Boolean
-    endsWith: Boolean
-    eq: Boolean
-    eqi: Boolean
-    gt: Boolean
-    gte: Boolean
-    in: [Boolean]
-    lt: Boolean
-    lte: Boolean
-    ne: Boolean
-    not: BooleanFilterInput
-    notContains: Boolean
-    notContainsi: Boolean
-    notIn: [Boolean]
-    notNull: Boolean
-    null: Boolean
-    or: [Boolean]
-    startsWith: Boolean
+  and: [Boolean]
+  between: [Boolean]
+  contains: Boolean
+  containsi: Boolean
+  endsWith: Boolean
+  eq: Boolean
+  eqi: Boolean
+  gt: Boolean
+  gte: Boolean
+  in: [Boolean]
+  lt: Boolean
+  lte: Boolean
+  ne: Boolean
+  not: BooleanFilterInput
+  notContains: Boolean
+  notContainsi: Boolean
+  notIn: [Boolean]
+  notNull: Boolean
+  null: Boolean
+  or: [Boolean]
+  startsWith: Boolean
+}
+
+input BrandFiltersInput {
+  Name: StringFilterInput
+  and: [BrandFiltersInput]
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  not: BrandFiltersInput
+  or: [BrandFiltersInput]
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input BrandInput {
+  ImageUrl: ID
+  Name: String
+  publishedAt: DateTime
+}
+
+input ContactFiltersInput {
+  Email: StringFilterInput
+  Message: StringFilterInput
+  and: [ContactFiltersInput]
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  name: StringFilterInput
+  not: ContactFiltersInput
+  or: [ContactFiltersInput]
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input ContactInput {
+  Email: String
+  Message: String
+  name: String
+  publishedAt: DateTime
 }
 
 input DateTimeFilterInput {
-    and: [DateTime]
-    between: [DateTime]
-    contains: DateTime
-    containsi: DateTime
-    endsWith: DateTime
-    eq: DateTime
-    eqi: DateTime
-    gt: DateTime
-    gte: DateTime
-    in: [DateTime]
-    lt: DateTime
-    lte: DateTime
-    ne: DateTime
-    not: DateTimeFilterInput
-    notContains: DateTime
-    notContainsi: DateTime
-    notIn: [DateTime]
-    notNull: Boolean
-    null: Boolean
-    or: [DateTime]
-    startsWith: DateTime
+  and: [DateTime]
+  between: [DateTime]
+  contains: DateTime
+  containsi: DateTime
+  endsWith: DateTime
+  eq: DateTime
+  eqi: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime]
+  lt: DateTime
+  lte: DateTime
+  ne: DateTime
+  not: DateTimeFilterInput
+  notContains: DateTime
+  notContainsi: DateTime
+  notIn: [DateTime]
+  notNull: Boolean
+  null: Boolean
+  or: [DateTime]
+  startsWith: DateTime
+}
+
+input ExperienceFiltersInput {
+  Year: IntFilterInput
+  and: [ExperienceFiltersInput]
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  not: ExperienceFiltersInput
+  or: [ExperienceFiltersInput]
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  work_experience: WorkExperienceFiltersInput
+}
+
+input ExperienceInput {
+  Year: Int
+  publishedAt: DateTime
+  work_experience: ID
 }
 
 input FileInfoInput {
-    alternativeText: String
-    caption: String
-    name: String
+  alternativeText: String
+  caption: String
+  name: String
 }
 
 input FloatFilterInput {
-    and: [Float]
-    between: [Float]
-    contains: Float
-    containsi: Float
-    endsWith: Float
-    eq: Float
-    eqi: Float
-    gt: Float
-    gte: Float
-    in: [Float]
-    lt: Float
-    lte: Float
-    ne: Float
-    not: FloatFilterInput
-    notContains: Float
-    notContainsi: Float
-    notIn: [Float]
-    notNull: Boolean
-    null: Boolean
-    or: [Float]
-    startsWith: Float
+  and: [Float]
+  between: [Float]
+  contains: Float
+  containsi: Float
+  endsWith: Float
+  eq: Float
+  eqi: Float
+  gt: Float
+  gte: Float
+  in: [Float]
+  lt: Float
+  lte: Float
+  ne: Float
+  not: FloatFilterInput
+  notContains: Float
+  notContainsi: Float
+  notIn: [Float]
+  notNull: Boolean
+  null: Boolean
+  or: [Float]
+  startsWith: Float
 }
 
 input I18NLocaleFiltersInput {
-    and: [I18NLocaleFiltersInput]
-    code: StringFilterInput
-    createdAt: DateTimeFilterInput
-    id: IDFilterInput
-    name: StringFilterInput
-    not: I18NLocaleFiltersInput
-    or: [I18NLocaleFiltersInput]
-    updatedAt: DateTimeFilterInput
+  and: [I18NLocaleFiltersInput]
+  code: StringFilterInput
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  name: StringFilterInput
+  not: I18NLocaleFiltersInput
+  or: [I18NLocaleFiltersInput]
+  updatedAt: DateTimeFilterInput
 }
 
 input IDFilterInput {
-    and: [ID]
-    between: [ID]
-    contains: ID
-    containsi: ID
-    endsWith: ID
-    eq: ID
-    eqi: ID
-    gt: ID
-    gte: ID
-    in: [ID]
-    lt: ID
-    lte: ID
-    ne: ID
-    not: IDFilterInput
-    notContains: ID
-    notContainsi: ID
-    notIn: [ID]
-    notNull: Boolean
-    null: Boolean
-    or: [ID]
-    startsWith: ID
+  and: [ID]
+  between: [ID]
+  contains: ID
+  containsi: ID
+  endsWith: ID
+  eq: ID
+  eqi: ID
+  gt: ID
+  gte: ID
+  in: [ID]
+  lt: ID
+  lte: ID
+  ne: ID
+  not: IDFilterInput
+  notContains: ID
+  notContainsi: ID
+  notIn: [ID]
+  notNull: Boolean
+  null: Boolean
+  or: [ID]
+  startsWith: ID
 }
 
 input IntFilterInput {
-    and: [Int]
-    between: [Int]
-    contains: Int
-    containsi: Int
-    endsWith: Int
-    eq: Int
-    eqi: Int
-    gt: Int
-    gte: Int
-    in: [Int]
-    lt: Int
-    lte: Int
-    ne: Int
-    not: IntFilterInput
-    notContains: Int
-    notContainsi: Int
-    notIn: [Int]
-    notNull: Boolean
-    null: Boolean
-    or: [Int]
-    startsWith: Int
+  and: [Int]
+  between: [Int]
+  contains: Int
+  containsi: Int
+  endsWith: Int
+  eq: Int
+  eqi: Int
+  gt: Int
+  gte: Int
+  in: [Int]
+  lt: Int
+  lte: Int
+  ne: Int
+  not: IntFilterInput
+  notContains: Int
+  notContainsi: Int
+  notIn: [Int]
+  notNull: Boolean
+  null: Boolean
+  or: [Int]
+  startsWith: Int
 }
 
 input JSONFilterInput {
-    and: [JSON]
-    between: [JSON]
-    contains: JSON
-    containsi: JSON
-    endsWith: JSON
-    eq: JSON
-    eqi: JSON
-    gt: JSON
-    gte: JSON
-    in: [JSON]
-    lt: JSON
-    lte: JSON
-    ne: JSON
-    not: JSONFilterInput
-    notContains: JSON
-    notContainsi: JSON
-    notIn: [JSON]
-    notNull: Boolean
-    null: Boolean
-    or: [JSON]
-    startsWith: JSON
+  and: [JSON]
+  between: [JSON]
+  contains: JSON
+  containsi: JSON
+  endsWith: JSON
+  eq: JSON
+  eqi: JSON
+  gt: JSON
+  gte: JSON
+  in: [JSON]
+  lt: JSON
+  lte: JSON
+  ne: JSON
+  not: JSONFilterInput
+  notContains: JSON
+  notContainsi: JSON
+  notIn: [JSON]
+  notNull: Boolean
+  null: Boolean
+  or: [JSON]
+  startsWith: JSON
 }
 
 input PaginationArg {
-    limit: Int
-    page: Int
-    pageSize: Int
-    start: Int
+  limit: Int
+  page: Int
+  pageSize: Int
+  start: Int
+}
+
+input SkillFiltersInput {
+  BackgroundColor: StringFilterInput
+  Name: StringFilterInput
+  and: [SkillFiltersInput]
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  not: SkillFiltersInput
+  or: [SkillFiltersInput]
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input SkillInput {
+  BackgroundColor: String
+  ImageUrl: ID
+  Name: String
+  publishedAt: DateTime
 }
 
 input StringFilterInput {
-    and: [String]
-    between: [String]
-    contains: String
-    containsi: String
-    endsWith: String
-    eq: String
-    eqi: String
-    gt: String
-    gte: String
-    in: [String]
-    lt: String
-    lte: String
-    ne: String
-    not: StringFilterInput
-    notContains: String
-    notContainsi: String
-    notIn: [String]
-    notNull: Boolean
-    null: Boolean
-    or: [String]
-    startsWith: String
+  and: [String]
+  between: [String]
+  contains: String
+  containsi: String
+  endsWith: String
+  eq: String
+  eqi: String
+  gt: String
+  gte: String
+  in: [String]
+  lt: String
+  lte: String
+  ne: String
+  not: StringFilterInput
+  notContains: String
+  notContainsi: String
+  notIn: [String]
+  notNull: Boolean
+  null: Boolean
+  or: [String]
+  startsWith: String
+}
+
+input TestimonialFiltersInput {
+  Compagny: StringFilterInput
+  Feedback: StringFilterInput
+  Name: StringFilterInput
+  and: [TestimonialFiltersInput]
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  not: TestimonialFiltersInput
+  or: [TestimonialFiltersInput]
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input TestimonialInput {
+  Compagny: String
+  Feedback: String
+  ImageUrl: ID
+  Name: String
+  publishedAt: DateTime
 }
 
 input UploadFileFiltersInput {
-    alternativeText: StringFilterInput
-    and: [UploadFileFiltersInput]
-    caption: StringFilterInput
-    createdAt: DateTimeFilterInput
-    ext: StringFilterInput
-    folder: UploadFolderFiltersInput
-    folderPath: StringFilterInput
-    formats: JSONFilterInput
-    hash: StringFilterInput
-    height: IntFilterInput
-    id: IDFilterInput
-    mime: StringFilterInput
-    name: StringFilterInput
-    not: UploadFileFiltersInput
-    or: [UploadFileFiltersInput]
-    previewUrl: StringFilterInput
-    provider: StringFilterInput
-    provider_metadata: JSONFilterInput
-    size: FloatFilterInput
-    updatedAt: DateTimeFilterInput
-    url: StringFilterInput
-    width: IntFilterInput
+  alternativeText: StringFilterInput
+  and: [UploadFileFiltersInput]
+  caption: StringFilterInput
+  createdAt: DateTimeFilterInput
+  ext: StringFilterInput
+  folder: UploadFolderFiltersInput
+  folderPath: StringFilterInput
+  formats: JSONFilterInput
+  hash: StringFilterInput
+  height: IntFilterInput
+  id: IDFilterInput
+  mime: StringFilterInput
+  name: StringFilterInput
+  not: UploadFileFiltersInput
+  or: [UploadFileFiltersInput]
+  previewUrl: StringFilterInput
+  provider: StringFilterInput
+  provider_metadata: JSONFilterInput
+  size: FloatFilterInput
+  updatedAt: DateTimeFilterInput
+  url: StringFilterInput
+  width: IntFilterInput
 }
 
 input UploadFileInput {
-    alternativeText: String
-    caption: String
-    ext: String
-    folder: ID
-    folderPath: String
-    formats: JSON
-    hash: String
-    height: Int
-    mime: String
-    name: String
-    previewUrl: String
-    provider: String
-    provider_metadata: JSON
-    size: Float
-    url: String
-    width: Int
+  alternativeText: String
+  caption: String
+  ext: String
+  folder: ID
+  folderPath: String
+  formats: JSON
+  hash: String
+  height: Int
+  mime: String
+  name: String
+  previewUrl: String
+  provider: String
+  provider_metadata: JSON
+  size: Float
+  url: String
+  width: Int
 }
 
 input UploadFolderFiltersInput {
-    and: [UploadFolderFiltersInput]
-    children: UploadFolderFiltersInput
-    createdAt: DateTimeFilterInput
-    files: UploadFileFiltersInput
-    id: IDFilterInput
-    name: StringFilterInput
-    not: UploadFolderFiltersInput
-    or: [UploadFolderFiltersInput]
-    parent: UploadFolderFiltersInput
-    path: StringFilterInput
-    pathId: IntFilterInput
-    updatedAt: DateTimeFilterInput
+  and: [UploadFolderFiltersInput]
+  children: UploadFolderFiltersInput
+  createdAt: DateTimeFilterInput
+  files: UploadFileFiltersInput
+  id: IDFilterInput
+  name: StringFilterInput
+  not: UploadFolderFiltersInput
+  or: [UploadFolderFiltersInput]
+  parent: UploadFolderFiltersInput
+  path: StringFilterInput
+  pathId: IntFilterInput
+  updatedAt: DateTimeFilterInput
 }
 
 input UploadFolderInput {
-    children: [ID]
-    files: [ID]
-    name: String
-    parent: ID
-    path: String
-    pathId: Int
+  children: [ID]
+  files: [ID]
+  name: String
+  parent: ID
+  path: String
+  pathId: Int
 }
 
 input UsersPermissionsLoginInput {
-    identifier: String!
-    password: String!
-    provider: String! = "local"
+  identifier: String!
+  password: String!
+  provider: String! = "local"
 }
 
 input UsersPermissionsPermissionFiltersInput {
-    action: StringFilterInput
-    and: [UsersPermissionsPermissionFiltersInput]
-    createdAt: DateTimeFilterInput
-    id: IDFilterInput
-    not: UsersPermissionsPermissionFiltersInput
-    or: [UsersPermissionsPermissionFiltersInput]
-    role: UsersPermissionsRoleFiltersInput
-    updatedAt: DateTimeFilterInput
+  action: StringFilterInput
+  and: [UsersPermissionsPermissionFiltersInput]
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  not: UsersPermissionsPermissionFiltersInput
+  or: [UsersPermissionsPermissionFiltersInput]
+  role: UsersPermissionsRoleFiltersInput
+  updatedAt: DateTimeFilterInput
 }
 
 input UsersPermissionsRegisterInput {
-    email: String!
-    password: String!
-    username: String!
+  email: String!
+  password: String!
+  username: String!
 }
 
 input UsersPermissionsRoleFiltersInput {
-    and: [UsersPermissionsRoleFiltersInput]
-    createdAt: DateTimeFilterInput
-    description: StringFilterInput
-    id: IDFilterInput
-    name: StringFilterInput
-    not: UsersPermissionsRoleFiltersInput
-    or: [UsersPermissionsRoleFiltersInput]
-    permissions: UsersPermissionsPermissionFiltersInput
-    type: StringFilterInput
-    updatedAt: DateTimeFilterInput
-    users: UsersPermissionsUserFiltersInput
+  and: [UsersPermissionsRoleFiltersInput]
+  createdAt: DateTimeFilterInput
+  description: StringFilterInput
+  id: IDFilterInput
+  name: StringFilterInput
+  not: UsersPermissionsRoleFiltersInput
+  or: [UsersPermissionsRoleFiltersInput]
+  permissions: UsersPermissionsPermissionFiltersInput
+  type: StringFilterInput
+  updatedAt: DateTimeFilterInput
+  users: UsersPermissionsUserFiltersInput
 }
 
 input UsersPermissionsRoleInput {
-    description: String
-    name: String
-    permissions: [ID]
-    type: String
-    users: [ID]
+  description: String
+  name: String
+  permissions: [ID]
+  type: String
+  users: [ID]
 }
 
 input UsersPermissionsUserFiltersInput {
-    and: [UsersPermissionsUserFiltersInput]
-    blocked: BooleanFilterInput
-    confirmationToken: StringFilterInput
-    confirmed: BooleanFilterInput
-    createdAt: DateTimeFilterInput
-    email: StringFilterInput
-    id: IDFilterInput
-    not: UsersPermissionsUserFiltersInput
-    or: [UsersPermissionsUserFiltersInput]
-    password: StringFilterInput
-    provider: StringFilterInput
-    resetPasswordToken: StringFilterInput
-    role: UsersPermissionsRoleFiltersInput
-    updatedAt: DateTimeFilterInput
-    username: StringFilterInput
+  and: [UsersPermissionsUserFiltersInput]
+  blocked: BooleanFilterInput
+  confirmationToken: StringFilterInput
+  confirmed: BooleanFilterInput
+  createdAt: DateTimeFilterInput
+  email: StringFilterInput
+  id: IDFilterInput
+  not: UsersPermissionsUserFiltersInput
+  or: [UsersPermissionsUserFiltersInput]
+  password: StringFilterInput
+  provider: StringFilterInput
+  resetPasswordToken: StringFilterInput
+  role: UsersPermissionsRoleFiltersInput
+  updatedAt: DateTimeFilterInput
+  username: StringFilterInput
 }
 
 input UsersPermissionsUserInput {
-    blocked: Boolean
-    confirmationToken: String
-    confirmed: Boolean
-    email: String
-    password: String
-    provider: String
-    resetPasswordToken: String
-    role: ID
-    username: String
+  blocked: Boolean
+  confirmationToken: String
+  confirmed: Boolean
+  email: String
+  password: String
+  provider: String
+  resetPasswordToken: String
+  role: ID
+  username: String
+}
+
+input WorkExperienceFiltersInput {
+  Compagny: StringFilterInput
+  Description: StringFilterInput
+  Name: StringFilterInput
+  and: [WorkExperienceFiltersInput]
+  createdAt: DateTimeFilterInput
+  experiences: ExperienceFiltersInput
+  id: IDFilterInput
+  not: WorkExperienceFiltersInput
+  or: [WorkExperienceFiltersInput]
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input WorkExperienceInput {
+  Compagny: String
+  Description: String
+  Name: String
+  experiences: [ID]
+  publishedAt: DateTime
+}
+
+input WorkFiltersInput {
+  CodeLink: StringFilterInput
+  Description: StringFilterInput
+  ProjectLink: StringFilterInput
+  Tags: StringFilterInput
+  Title: StringFilterInput
+  and: [WorkFiltersInput]
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  not: WorkFiltersInput
+  or: [WorkFiltersInput]
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input WorkInput {
+  CodeLink: String
+  Description: String
+  ImageUrl: ID
+  ProjectLink: String
+  Tags: ENUM_WORK_TAGS
+  Title: String
+  publishedAt: DateTime
 }

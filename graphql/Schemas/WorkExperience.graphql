@@ -1,0 +1,15 @@
+query WorkExperiences($filters: WorkExperienceFiltersInput, $pagination: PaginationArg = {}, $publicationState: PublicationState = LIVE, $sort: [String] = []){
+  workExperiences(sort: $sort, publicationState: $publicationState, pagination: $pagination, filters: $filters){
+    data {
+      id
+      attributes {
+        publishedAt
+        Description
+        updatedAt
+        createdAt
+        Compagny
+      }
+    }
+
+  }
+}
