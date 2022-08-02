@@ -18,12 +18,14 @@ export function AboutCard({ title, imageUrl, description }: AboutCardProps) {
       className={styles['app__profile-item']}
       key={1}
     >
-      <img
+      <Image
         src={imageUrl}
-        className={'w-full h-[170px] rounded-sm'}
-        style={{ objectFit: 'cover' }}
+        width={400}
+        height={350}
         alt={title}
+        className={'w-full h-[170px] rounded-sm'}
       />
+
       <h2 className={styles['bold-text']} style={{ marginTop: 20 }}>
         {title}
       </h2>
