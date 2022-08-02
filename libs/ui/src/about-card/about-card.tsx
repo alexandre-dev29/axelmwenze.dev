@@ -1,5 +1,6 @@
-import './about-card.module.scss';
+import styles from './about-card.module.scss';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 /* eslint-disable-next-line */
 export interface AboutCardProps {
@@ -14,9 +15,7 @@ export function AboutCard({ title, imageUrl, description }: AboutCardProps) {
       whileInView={{ opacity: 1 }}
       whileHover={{ scale: 1.1 }}
       transition={{ duration: 0.5, type: 'tween' }}
-      className={
-        'w-[190px] flex justify-start items-start flex-col m-[2rem] xl:w-[370px] xl:mx-[2rem] xl:my-[4rem]'
-      }
+      className={styles['app__profile-item']}
       key={1}
     >
       <img
@@ -25,10 +24,10 @@ export function AboutCard({ title, imageUrl, description }: AboutCardProps) {
         style={{ objectFit: 'cover' }}
         alt={title}
       />
-      <h2 className="bold-text" style={{ marginTop: 20 }}>
+      <h2 className={styles['bold-text']} style={{ marginTop: 20 }}>
         {title}
       </h2>
-      <p className="p-text" style={{ marginTop: 10 }}>
+      <p className={styles['p-text']} style={{ marginTop: 10 }}>
         {description}
       </p>
     </motion.div>

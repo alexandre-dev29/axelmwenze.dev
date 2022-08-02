@@ -19,9 +19,7 @@ export function NavBar(props: NavBarProps) {
         Axel <span className={'text-blue-400'}> Mwenze</span>
       </h1>
       <div className={'flex flex-1  p-0 justify-center items-center'}>
-        <ul
-          className={`grid grid-cols-${listLinks.length} justify-center items-center m-0`}
-        >
+        <ul className={`flex justify-center items-center m-0`}>
           {listLinks.map(({ linkName, link }, index) => (
             <li key={index} className={'m-0'}>
               <Link href={link}>
