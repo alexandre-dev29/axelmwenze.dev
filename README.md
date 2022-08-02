@@ -16,6 +16,7 @@ Below are our core plugins:
 
 - [NextJs](https://nextjs.org/)
 - [TailwindCss](https://tailwindcss.com)
+- [NextUI](https://nextui.org/)
 - [Graphql](https://graphql.org/)
 - [Typescript](https://www.typescriptlang.org/)
 
