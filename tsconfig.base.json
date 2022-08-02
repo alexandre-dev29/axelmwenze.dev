@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@next-template-nx/data": ["libs/data/src/index.ts"],
       "@next-template-nx/ui": ["libs/ui/src/index.ts"],
       "@next-template-nx/utils": ["libs/utils/src/index.ts"]
     }

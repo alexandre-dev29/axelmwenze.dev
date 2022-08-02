@@ -1,17 +1,17 @@
 import { AppProps } from 'next/app';
-import Head from 'next/head';
 import './styles.css';
+import { UserContext } from '@next-template-nx/utils';
+import { Toaster } from 'react-hot-toast';
+import { AppWrapper } from '@next-template-nx/ui';
 
 function CustomApp({ Component, pageProps }: AppProps) {
   return (
-    <>
-      <Head>
-        <title>Welcome to front!</title>
-      </Head>
-      <main className="app">
+    <AppWrapper>
+      <UserContext.Provider value={null}>
+        <Toaster />
         <Component {...pageProps} />
-      </main>
-    </>
+      </UserContext.Provider>
+    </AppWrapper>
   );
 }
 
