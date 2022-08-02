@@ -7,7 +7,7 @@ query Experiences($filters: ExperienceFiltersInput, $pagination: PaginationArg =
         updatedAt
         publishedAt
         Year
-        work_experience {
+        work_experiences {
           data {
             id
             attributes {

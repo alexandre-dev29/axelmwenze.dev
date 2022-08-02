@@ -216,7 +216,15 @@ export type Experience = {
   createdAt?: Maybe<Scalars['DateTime']>;
   publishedAt?: Maybe<Scalars['DateTime']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
-  work_experience?: Maybe<WorkExperienceEntityResponse>;
+  work_experiences?: Maybe<WorkExperienceRelationResponseCollection>;
+};
+
+
+export type ExperienceWork_ExperiencesArgs = {
+  filters?: InputMaybe<WorkExperienceFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 export type ExperienceEntity = {
@@ -245,18 +253,13 @@ export type ExperienceFiltersInput = {
   or?: InputMaybe<Array<InputMaybe<ExperienceFiltersInput>>>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
-  work_experience?: InputMaybe<WorkExperienceFiltersInput>;
+  work_experiences?: InputMaybe<WorkExperienceFiltersInput>;
 };
 
 export type ExperienceInput = {
   Year?: InputMaybe<Scalars['Int']>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
-  work_experience?: InputMaybe<Scalars['ID']>;
-};
-
-export type ExperienceRelationResponseCollection = {
-  __typename?: 'ExperienceRelationResponseCollection';
-  data: Array<ExperienceEntity>;
+  work_experiences?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
 };
 
 export type FileInfoInput = {
@@ -1453,17 +1456,8 @@ export type WorkExperience = {
   Description?: Maybe<Scalars['String']>;
   Name: Scalars['String'];
   createdAt?: Maybe<Scalars['DateTime']>;
-  experiences?: Maybe<ExperienceRelationResponseCollection>;
   publishedAt?: Maybe<Scalars['DateTime']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
-};
-
-
-export type WorkExperienceExperiencesArgs = {
-  filters?: InputMaybe<ExperienceFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 export type WorkExperienceEntity = {
@@ -1489,7 +1483,6 @@ export type WorkExperienceFiltersInput = {
   Name?: InputMaybe<StringFilterInput>;
   and?: InputMaybe<Array<InputMaybe<WorkExperienceFiltersInput>>>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
-  experiences?: InputMaybe<ExperienceFiltersInput>;
   id?: InputMaybe<IdFilterInput>;
   not?: InputMaybe<WorkExperienceFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<WorkExperienceFiltersInput>>>;
@@ -1501,8 +1494,12 @@ export type WorkExperienceInput = {
   Compagny?: InputMaybe<Scalars['String']>;
   Description?: InputMaybe<Scalars['String']>;
   Name?: InputMaybe<Scalars['String']>;
-  experiences?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type WorkExperienceRelationResponseCollection = {
+  __typename?: 'WorkExperienceRelationResponseCollection';
+  data: Array<WorkExperienceEntity>;
 };
 
 export type WorkFiltersInput = {
@@ -1569,7 +1566,7 @@ export type ExperiencesQueryVariables = Exact<{
 }>;
 
 
-export type ExperiencesQuery = { __typename?: 'Query', experiences?: { __typename?: 'ExperienceEntityResponseCollection', data: Array<{ __typename?: 'ExperienceEntity', id?: string | null, attributes?: { __typename?: 'Experience', createdAt?: any | null, updatedAt?: any | null, publishedAt?: any | null, Year: number, work_experience?: { __typename?: 'WorkExperienceEntityResponse', data?: { __typename?: 'WorkExperienceEntity', id?: string | null, attributes?: { __typename?: 'WorkExperience', Name: string, Description?: string | null, createdAt?: any | null, updatedAt?: any | null, Compagny?: string | null } | null } | null } | null } | null }> } | null };
+export type ExperiencesQuery = { __typename?: 'Query', experiences?: { __typename?: 'ExperienceEntityResponseCollection', data: Array<{ __typename?: 'ExperienceEntity', id?: string | null, attributes?: { __typename?: 'Experience', createdAt?: any | null, updatedAt?: any | null, publishedAt?: any | null, Year: number, work_experiences?: { __typename?: 'WorkExperienceRelationResponseCollection', data: Array<{ __typename?: 'WorkExperienceEntity', id?: string | null, attributes?: { __typename?: 'WorkExperience', Name: string, Description?: string | null, createdAt?: any | null, updatedAt?: any | null, Compagny?: string | null } | null }> } | null } | null }> } | null };
 
 export type SkillsQueryVariables = Exact<{
   filters?: InputMaybe<SkillFiltersInput>;
@@ -1834,7 +1831,7 @@ export const ExperiencesDocument = gql`
         updatedAt
         publishedAt
         Year
-        work_experience {
+        work_experiences {
           data {
             id
             attributes {

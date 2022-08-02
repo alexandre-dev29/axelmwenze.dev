@@ -80,7 +80,7 @@ type Experience {
   createdAt: DateTime
   publishedAt: DateTime
   updatedAt: DateTime
-  work_experience: WorkExperienceEntityResponse
+  work_experiences(filters: WorkExperienceFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): WorkExperienceRelationResponseCollection
 }
 
 type ExperienceEntity {
@@ -95,10 +95,6 @@ type ExperienceEntityResponse {
 type ExperienceEntityResponseCollection {
   data: [ExperienceEntity!]!
   meta: ResponseCollectionMeta!
-}
-
-type ExperienceRelationResponseCollection {
-  data: [ExperienceEntity!]!
 }
 
 type I18NLocale {
@@ -472,7 +468,6 @@ type WorkExperience {
   Description: String
   Name: String!
   createdAt: DateTime
-  experiences(filters: ExperienceFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): ExperienceRelationResponseCollection
   publishedAt: DateTime
   updatedAt: DateTime
 }
@@ -489,6 +484,10 @@ type WorkExperienceEntityResponse {
 type WorkExperienceEntityResponseCollection {
   data: [WorkExperienceEntity!]!
   meta: ResponseCollectionMeta!
+}
+
+type WorkExperienceRelationResponseCollection {
+  data: [WorkExperienceEntity!]!
 }
 
 enum ENUM_WORK_TAGS {
@@ -626,13 +625,13 @@ input ExperienceFiltersInput {
   or: [ExperienceFiltersInput]
   publishedAt: DateTimeFilterInput
   updatedAt: DateTimeFilterInput
-  work_experience: WorkExperienceFiltersInput
+  work_experiences: WorkExperienceFiltersInput
 }
 
 input ExperienceInput {
   Year: Int
   publishedAt: DateTime
-  work_experience: ID
+  work_experiences: [ID]
 }
 
 input FileInfoInput {
@@ -968,7 +967,6 @@ input WorkExperienceFiltersInput {
   Name: StringFilterInput
   and: [WorkExperienceFiltersInput]
   createdAt: DateTimeFilterInput
-  experiences: ExperienceFiltersInput
   id: IDFilterInput
   not: WorkExperienceFiltersInput
   or: [WorkExperienceFiltersInput]
@@ -980,7 +978,6 @@ input WorkExperienceInput {
   Compagny: String
   Description: String
   Name: String
-  experiences: [ID]
   publishedAt: DateTime
 }
 

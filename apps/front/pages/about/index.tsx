@@ -1,4 +1,3 @@
-import styles from './index.module.scss';
 import { useGetAllAboutQuery } from '@next-template-nx/data';
 import { LoadingState } from '@next-template-nx/ui';
 import ProfileContainer from './ProfileContainer';
@@ -15,7 +14,7 @@ export function About(props: AboutProps) {
   });
   return (
     <div className={'flex-1 w-full flex-col py-24'}>
-      <h2 className={styles['head-text']}>
+      <h2 className={'head-text'}>
         I Know that <span>Good Design</span> <br />
         means <span>Good Business</span>
       </h2>
