@@ -2,9 +2,15 @@ import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K];
+};
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]?: Maybe<T[SubKey]>;
+};
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]: Maybe<T[SubKey]>;
+};
 const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
@@ -202,14 +208,6 @@ export type DateTimeFilterInput = {
   startsWith?: InputMaybe<Scalars['DateTime']>;
 };
 
-export enum Enum_Work_Tags {
-  Backend = 'Backend',
-  Frontend = 'Frontend',
-  Fullstack = 'Fullstack',
-  Mobile = 'Mobile',
-  Other = 'Other'
-}
-
 export type Experience = {
   __typename?: 'Experience';
   Year: Scalars['Int'];
@@ -218,7 +216,6 @@ export type Experience = {
   updatedAt?: Maybe<Scalars['DateTime']>;
   work_experiences?: Maybe<WorkExperienceRelationResponseCollection>;
 };
-
 
 export type ExperienceWork_ExperiencesArgs = {
   filters?: InputMaybe<WorkExperienceFiltersInput>;
@@ -292,7 +289,22 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph = About | Brand | Contact | Experience | I18NLocale | Skill | Testimonial | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Work | WorkExperience;
+export type GenericMorph =
+  | About
+  | Brand
+  | Contact
+  | Experience
+  | I18NLocale
+  | Skill
+  | Tag
+  | Testimonial
+  | UploadFile
+  | UploadFolder
+  | UsersPermissionsPermission
+  | UsersPermissionsRole
+  | UsersPermissionsUser
+  | Work
+  | WorkExperience;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -409,6 +421,7 @@ export type Mutation = {
   createContact?: Maybe<ContactEntityResponse>;
   createExperience?: Maybe<ExperienceEntityResponse>;
   createSkill?: Maybe<SkillEntityResponse>;
+  createTag?: Maybe<TagEntityResponse>;
   createTestimonial?: Maybe<TestimonialEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
   createUploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -423,6 +436,7 @@ export type Mutation = {
   deleteContact?: Maybe<ContactEntityResponse>;
   deleteExperience?: Maybe<ExperienceEntityResponse>;
   deleteSkill?: Maybe<SkillEntityResponse>;
+  deleteTag?: Maybe<TagEntityResponse>;
   deleteTestimonial?: Maybe<TestimonialEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   deleteUploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -449,6 +463,7 @@ export type Mutation = {
   updateExperience?: Maybe<ExperienceEntityResponse>;
   updateFileInfo: UploadFileEntityResponse;
   updateSkill?: Maybe<SkillEntityResponse>;
+  updateTag?: Maybe<TagEntityResponse>;
   updateTestimonial?: Maybe<TestimonialEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
   updateUploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -461,141 +476,121 @@ export type Mutation = {
   upload: UploadFileEntityResponse;
 };
 
-
 export type MutationCreateAboutArgs = {
   data: AboutInput;
 };
-
 
 export type MutationCreateBrandArgs = {
   data: BrandInput;
 };
 
-
 export type MutationCreateContactArgs = {
   data: ContactInput;
 };
-
 
 export type MutationCreateExperienceArgs = {
   data: ExperienceInput;
 };
 
-
 export type MutationCreateSkillArgs = {
   data: SkillInput;
 };
 
+export type MutationCreateTagArgs = {
+  data: TagInput;
+};
 
 export type MutationCreateTestimonialArgs = {
   data: TestimonialInput;
 };
 
-
 export type MutationCreateUploadFileArgs = {
   data: UploadFileInput;
 };
-
 
 export type MutationCreateUploadFolderArgs = {
   data: UploadFolderInput;
 };
 
-
 export type MutationCreateUsersPermissionsRoleArgs = {
   data: UsersPermissionsRoleInput;
 };
-
 
 export type MutationCreateUsersPermissionsUserArgs = {
   data: UsersPermissionsUserInput;
 };
 
-
 export type MutationCreateWorkArgs = {
   data: WorkInput;
 };
-
 
 export type MutationCreateWorkExperienceArgs = {
   data: WorkExperienceInput;
 };
 
-
 export type MutationDeleteAboutArgs = {
   id: Scalars['ID'];
 };
-
 
 export type MutationDeleteBrandArgs = {
   id: Scalars['ID'];
 };
 
-
 export type MutationDeleteContactArgs = {
   id: Scalars['ID'];
 };
-
 
 export type MutationDeleteExperienceArgs = {
   id: Scalars['ID'];
 };
 
-
 export type MutationDeleteSkillArgs = {
   id: Scalars['ID'];
 };
 
+export type MutationDeleteTagArgs = {
+  id: Scalars['ID'];
+};
 
 export type MutationDeleteTestimonialArgs = {
   id: Scalars['ID'];
 };
 
-
 export type MutationDeleteUploadFileArgs = {
   id: Scalars['ID'];
 };
-
 
 export type MutationDeleteUploadFolderArgs = {
   id: Scalars['ID'];
 };
 
-
 export type MutationDeleteUsersPermissionsRoleArgs = {
   id: Scalars['ID'];
 };
-
 
 export type MutationDeleteUsersPermissionsUserArgs = {
   id: Scalars['ID'];
 };
 
-
 export type MutationDeleteWorkArgs = {
   id: Scalars['ID'];
 };
-
 
 export type MutationDeleteWorkExperienceArgs = {
   id: Scalars['ID'];
 };
 
-
 export type MutationEmailConfirmationArgs = {
   confirmation: Scalars['String'];
 };
-
 
 export type MutationForgotPasswordArgs = {
   email: Scalars['String'];
 };
 
-
 export type MutationLoginArgs = {
   input: UsersPermissionsLoginInput;
 };
-
 
 export type MutationMultipleUploadArgs = {
   field?: InputMaybe<Scalars['String']>;
@@ -604,16 +599,13 @@ export type MutationMultipleUploadArgs = {
   refId?: InputMaybe<Scalars['ID']>;
 };
 
-
 export type MutationRegisterArgs = {
   input: UsersPermissionsRegisterInput;
 };
 
-
 export type MutationRemoveFileArgs = {
   id: Scalars['ID'];
 };
-
 
 export type MutationResetPasswordArgs = {
   code: Scalars['String'];
@@ -621,84 +613,75 @@ export type MutationResetPasswordArgs = {
   passwordConfirmation: Scalars['String'];
 };
 
-
 export type MutationUpdateAboutArgs = {
   data: AboutInput;
   id: Scalars['ID'];
 };
-
 
 export type MutationUpdateBrandArgs = {
   data: BrandInput;
   id: Scalars['ID'];
 };
 
-
 export type MutationUpdateContactArgs = {
   data: ContactInput;
   id: Scalars['ID'];
 };
-
 
 export type MutationUpdateExperienceArgs = {
   data: ExperienceInput;
   id: Scalars['ID'];
 };
 
-
 export type MutationUpdateFileInfoArgs = {
   id: Scalars['ID'];
   info?: InputMaybe<FileInfoInput>;
 };
-
 
 export type MutationUpdateSkillArgs = {
   data: SkillInput;
   id: Scalars['ID'];
 };
 
+export type MutationUpdateTagArgs = {
+  data: TagInput;
+  id: Scalars['ID'];
+};
 
 export type MutationUpdateTestimonialArgs = {
   data: TestimonialInput;
   id: Scalars['ID'];
 };
 
-
 export type MutationUpdateUploadFileArgs = {
   data: UploadFileInput;
   id: Scalars['ID'];
 };
-
 
 export type MutationUpdateUploadFolderArgs = {
   data: UploadFolderInput;
   id: Scalars['ID'];
 };
 
-
 export type MutationUpdateUsersPermissionsRoleArgs = {
   data: UsersPermissionsRoleInput;
   id: Scalars['ID'];
 };
-
 
 export type MutationUpdateUsersPermissionsUserArgs = {
   data: UsersPermissionsUserInput;
   id: Scalars['ID'];
 };
 
-
 export type MutationUpdateWorkArgs = {
   data: WorkInput;
   id: Scalars['ID'];
 };
 
-
 export type MutationUpdateWorkExperienceArgs = {
   data: WorkExperienceInput;
   id: Scalars['ID'];
 };
-
 
 export type MutationUploadArgs = {
   field?: InputMaybe<Scalars['String']>;
@@ -725,7 +708,7 @@ export type PaginationArg = {
 
 export enum PublicationState {
   Live = 'LIVE',
-  Preview = 'PREVIEW'
+  Preview = 'PREVIEW',
 }
 
 export type Query = {
@@ -743,6 +726,8 @@ export type Query = {
   me?: Maybe<UsersPermissionsMe>;
   skill?: Maybe<SkillEntityResponse>;
   skills?: Maybe<SkillEntityResponseCollection>;
+  tag?: Maybe<TagEntityResponse>;
+  tags?: Maybe<TagEntityResponseCollection>;
   testimonial?: Maybe<TestimonialEntityResponse>;
   testimonials?: Maybe<TestimonialEntityResponseCollection>;
   uploadFile?: Maybe<UploadFileEntityResponse>;
@@ -759,11 +744,9 @@ export type Query = {
   works?: Maybe<WorkEntityResponseCollection>;
 };
 
-
 export type QueryAboutArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryAboutsArgs = {
   filters?: InputMaybe<AboutFiltersInput>;
@@ -772,11 +755,9 @@ export type QueryAboutsArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
-
 export type QueryBrandArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryBrandsArgs = {
   filters?: InputMaybe<BrandFiltersInput>;
@@ -785,11 +766,9 @@ export type QueryBrandsArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
-
 export type QueryContactArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryContactsArgs = {
   filters?: InputMaybe<ContactFiltersInput>;
@@ -798,11 +777,9 @@ export type QueryContactsArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
-
 export type QueryExperienceArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryExperiencesArgs = {
   filters?: InputMaybe<ExperienceFiltersInput>;
@@ -811,11 +788,9 @@ export type QueryExperiencesArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
-
 export type QueryI18NLocaleArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryI18NLocalesArgs = {
   filters?: InputMaybe<I18NLocaleFiltersInput>;
@@ -823,11 +798,9 @@ export type QueryI18NLocalesArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
-
 export type QuerySkillArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QuerySkillsArgs = {
   filters?: InputMaybe<SkillFiltersInput>;
@@ -836,11 +809,20 @@ export type QuerySkillsArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+export type QueryTagArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+export type QueryTagsArgs = {
+  filters?: InputMaybe<TagFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
 
 export type QueryTestimonialArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryTestimonialsArgs = {
   filters?: InputMaybe<TestimonialFiltersInput>;
@@ -849,11 +831,9 @@ export type QueryTestimonialsArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
-
 export type QueryUploadFileArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryUploadFilesArgs = {
   filters?: InputMaybe<UploadFileFiltersInput>;
@@ -861,11 +841,9 @@ export type QueryUploadFilesArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
-
 export type QueryUploadFolderArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryUploadFoldersArgs = {
   filters?: InputMaybe<UploadFolderFiltersInput>;
@@ -873,11 +851,9 @@ export type QueryUploadFoldersArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
-
 export type QueryUsersPermissionsRoleArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryUsersPermissionsRolesArgs = {
   filters?: InputMaybe<UsersPermissionsRoleFiltersInput>;
@@ -885,11 +861,9 @@ export type QueryUsersPermissionsRolesArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
-
 export type QueryUsersPermissionsUserArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryUsersPermissionsUsersArgs = {
   filters?: InputMaybe<UsersPermissionsUserFiltersInput>;
@@ -897,16 +871,13 @@ export type QueryUsersPermissionsUsersArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
-
 export type QueryWorkArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
-
 export type QueryWorkExperienceArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type QueryWorkExperiencesArgs = {
   filters?: InputMaybe<WorkExperienceFiltersInput>;
@@ -914,7 +885,6 @@ export type QueryWorkExperiencesArgs = {
   publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
-
 
 export type QueryWorksArgs = {
   filters?: InputMaybe<WorkFiltersInput>;
@@ -996,6 +966,52 @@ export type StringFilterInput = {
   null?: InputMaybe<Scalars['Boolean']>;
   or?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   startsWith?: InputMaybe<Scalars['String']>;
+};
+
+export type Tag = {
+  __typename?: 'Tag';
+  createdAt?: Maybe<Scalars['DateTime']>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  tag: Scalars['String'];
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type TagEntity = {
+  __typename?: 'TagEntity';
+  attributes?: Maybe<Tag>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type TagEntityResponse = {
+  __typename?: 'TagEntityResponse';
+  data?: Maybe<TagEntity>;
+};
+
+export type TagEntityResponseCollection = {
+  __typename?: 'TagEntityResponseCollection';
+  data: Array<TagEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type TagFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<TagFiltersInput>>>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  not?: InputMaybe<TagFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<TagFiltersInput>>>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  tag?: InputMaybe<StringFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type TagInput = {
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  tag?: InputMaybe<Scalars['String']>;
+};
+
+export type TagRelationResponseCollection = {
+  __typename?: 'TagRelationResponseCollection';
+  data: Array<TagEntity>;
 };
 
 export type Testimonial = {
@@ -1146,13 +1162,11 @@ export type UploadFolder = {
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
-
 export type UploadFolderChildrenArgs = {
   filters?: InputMaybe<UploadFolderFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
-
 
 export type UploadFolderFilesArgs = {
   filters?: InputMaybe<UploadFileFiltersInput>;
@@ -1298,13 +1312,11 @@ export type UsersPermissionsRole = {
   users?: Maybe<UsersPermissionsUserRelationResponseCollection>;
 };
 
-
 export type UsersPermissionsRolePermissionsArgs = {
   filters?: InputMaybe<UsersPermissionsPermissionFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
-
 
 export type UsersPermissionsRoleUsersArgs = {
   filters?: InputMaybe<UsersPermissionsUserFiltersInput>;
@@ -1423,14 +1435,21 @@ export type UsersPermissionsUserRelationResponseCollection = {
 export type Work = {
   __typename?: 'Work';
   CodeLink?: Maybe<Scalars['String']>;
-  Description?: Maybe<Scalars['String']>;
+  Description: Scalars['String'];
   ImageUrl: UploadFileEntityResponse;
-  ProjectLink?: Maybe<Scalars['String']>;
-  Tags?: Maybe<Enum_Work_Tags>;
+  ProjectLink: Scalars['String'];
   Title: Scalars['String'];
   createdAt?: Maybe<Scalars['DateTime']>;
   publishedAt?: Maybe<Scalars['DateTime']>;
+  tags?: Maybe<TagRelationResponseCollection>;
   updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type WorkTagsArgs = {
+  filters?: InputMaybe<TagFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 export type WorkEntity = {
@@ -1506,7 +1525,6 @@ export type WorkFiltersInput = {
   CodeLink?: InputMaybe<StringFilterInput>;
   Description?: InputMaybe<StringFilterInput>;
   ProjectLink?: InputMaybe<StringFilterInput>;
-  Tags?: InputMaybe<StringFilterInput>;
   Title?: InputMaybe<StringFilterInput>;
   and?: InputMaybe<Array<InputMaybe<WorkFiltersInput>>>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
@@ -1514,6 +1532,7 @@ export type WorkFiltersInput = {
   not?: InputMaybe<WorkFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<WorkFiltersInput>>>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
+  tags?: InputMaybe<TagFiltersInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
 
@@ -1522,120 +1541,400 @@ export type WorkInput = {
   Description?: InputMaybe<Scalars['String']>;
   ImageUrl?: InputMaybe<Scalars['ID']>;
   ProjectLink?: InputMaybe<Scalars['String']>;
-  Tags?: InputMaybe<Enum_Work_Tags>;
   Title?: InputMaybe<Scalars['String']>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
+  tags?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
 };
 
 export type GetOneAboutQueryVariables = Exact<{
   id?: InputMaybe<Scalars['ID']>;
 }>;
 
-
-export type GetOneAboutQuery = { __typename?: 'Query', about?: { __typename?: 'AboutEntityResponse', data?: { __typename?: 'AboutEntity', id?: string | null, attributes?: { __typename?: 'About', createdAt?: any | null, updatedAt?: any | null, Description?: string | null, Title: string, publishedAt?: any | null, ImageUrl?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string, previewUrl?: string | null, mime: string, name: string } | null } | null } | null } | null } | null } | null };
+export type GetOneAboutQuery = {
+  __typename?: 'Query';
+  about?: {
+    __typename?: 'AboutEntityResponse';
+    data?: {
+      __typename?: 'AboutEntity';
+      id?: string | null;
+      attributes?: {
+        __typename?: 'About';
+        createdAt?: any | null;
+        updatedAt?: any | null;
+        Description?: string | null;
+        Title: string;
+        publishedAt?: any | null;
+        ImageUrl?: {
+          __typename?: 'UploadFileEntityResponse';
+          data?: {
+            __typename?: 'UploadFileEntity';
+            id?: string | null;
+            attributes?: {
+              __typename?: 'UploadFile';
+              url: string;
+              previewUrl?: string | null;
+              mime: string;
+              name: string;
+            } | null;
+          } | null;
+        } | null;
+      } | null;
+    } | null;
+  } | null;
+};
 
 export type GetAllAboutQueryVariables = Exact<{
   filters?: InputMaybe<AboutFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>>;
+  sort?: InputMaybe<
+    Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>
+  >;
 }>;
 
-
-export type GetAllAboutQuery = { __typename?: 'Query', abouts?: { __typename?: 'AboutEntityResponseCollection', data: Array<{ __typename?: 'AboutEntity', id?: string | null, attributes?: { __typename?: 'About', createdAt?: any | null, updatedAt?: any | null, Description?: string | null, Title: string, publishedAt?: any | null, ImageUrl?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string, previewUrl?: string | null, mime: string, name: string } | null } | null } | null } | null }> } | null };
+export type GetAllAboutQuery = {
+  __typename?: 'Query';
+  abouts?: {
+    __typename?: 'AboutEntityResponseCollection';
+    data: Array<{
+      __typename?: 'AboutEntity';
+      id?: string | null;
+      attributes?: {
+        __typename?: 'About';
+        createdAt?: any | null;
+        updatedAt?: any | null;
+        Description?: string | null;
+        Title: string;
+        publishedAt?: any | null;
+        ImageUrl?: {
+          __typename?: 'UploadFileEntityResponse';
+          data?: {
+            __typename?: 'UploadFileEntity';
+            id?: string | null;
+            attributes?: {
+              __typename?: 'UploadFile';
+              url: string;
+              previewUrl?: string | null;
+              mime: string;
+              name: string;
+            } | null;
+          } | null;
+        } | null;
+      } | null;
+    }>;
+  } | null;
+};
 
 export type LoginMutationVariables = Exact<{
   input: UsersPermissionsLoginInput;
 }>;
 
-
-export type LoginMutation = { __typename?: 'Mutation', login: { __typename?: 'UsersPermissionsLoginPayload', jwt?: string | null, user: { __typename?: 'UsersPermissionsMe', id: string, confirmed?: boolean | null, email?: string | null, username: string, role?: { __typename?: 'UsersPermissionsMeRole', id: string, name: string, description?: string | null } | null } } };
+export type LoginMutation = {
+  __typename?: 'Mutation';
+  login: {
+    __typename?: 'UsersPermissionsLoginPayload';
+    jwt?: string | null;
+    user: {
+      __typename?: 'UsersPermissionsMe';
+      id: string;
+      confirmed?: boolean | null;
+      email?: string | null;
+      username: string;
+      role?: {
+        __typename?: 'UsersPermissionsMeRole';
+        id: string;
+        name: string;
+        description?: string | null;
+      } | null;
+    };
+  };
+};
 
 export type RegisterMutationVariables = Exact<{
   input: UsersPermissionsRegisterInput;
 }>;
 
-
-export type RegisterMutation = { __typename?: 'Mutation', register: { __typename?: 'UsersPermissionsLoginPayload', jwt?: string | null, user: { __typename?: 'UsersPermissionsMe', id: string, username: string, email?: string | null, confirmed?: boolean | null, blocked?: boolean | null, role?: { __typename?: 'UsersPermissionsMeRole', id: string, name: string, description?: string | null } | null } } };
+export type RegisterMutation = {
+  __typename?: 'Mutation';
+  register: {
+    __typename?: 'UsersPermissionsLoginPayload';
+    jwt?: string | null;
+    user: {
+      __typename?: 'UsersPermissionsMe';
+      id: string;
+      username: string;
+      email?: string | null;
+      confirmed?: boolean | null;
+      blocked?: boolean | null;
+      role?: {
+        __typename?: 'UsersPermissionsMeRole';
+        id: string;
+        name: string;
+        description?: string | null;
+      } | null;
+    };
+  };
+};
 
 export type ExperiencesQueryVariables = Exact<{
   filters?: InputMaybe<ExperienceFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>>;
+  sort?: InputMaybe<
+    Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>
+  >;
 }>;
 
-
-export type ExperiencesQuery = { __typename?: 'Query', experiences?: { __typename?: 'ExperienceEntityResponseCollection', data: Array<{ __typename?: 'ExperienceEntity', id?: string | null, attributes?: { __typename?: 'Experience', createdAt?: any | null, updatedAt?: any | null, publishedAt?: any | null, Year: number, work_experiences?: { __typename?: 'WorkExperienceRelationResponseCollection', data: Array<{ __typename?: 'WorkExperienceEntity', id?: string | null, attributes?: { __typename?: 'WorkExperience', Name: string, Description?: string | null, createdAt?: any | null, updatedAt?: any | null, Compagny?: string | null } | null }> } | null } | null }> } | null };
+export type ExperiencesQuery = {
+  __typename?: 'Query';
+  experiences?: {
+    __typename?: 'ExperienceEntityResponseCollection';
+    data: Array<{
+      __typename?: 'ExperienceEntity';
+      id?: string | null;
+      attributes?: {
+        __typename?: 'Experience';
+        createdAt?: any | null;
+        updatedAt?: any | null;
+        publishedAt?: any | null;
+        Year: number;
+        work_experiences?: {
+          __typename?: 'WorkExperienceRelationResponseCollection';
+          data: Array<{
+            __typename?: 'WorkExperienceEntity';
+            id?: string | null;
+            attributes?: {
+              __typename?: 'WorkExperience';
+              Name: string;
+              Description?: string | null;
+              createdAt?: any | null;
+              updatedAt?: any | null;
+              Compagny?: string | null;
+            } | null;
+          }>;
+        } | null;
+      } | null;
+    }>;
+  } | null;
+};
 
 export type SkillsQueryVariables = Exact<{
   filters?: InputMaybe<SkillFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>>;
+  sort?: InputMaybe<
+    Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>
+  >;
 }>;
 
+export type SkillsQuery = {
+  __typename?: 'Query';
+  skills?: {
+    __typename?: 'SkillEntityResponseCollection';
+    data: Array<{
+      __typename?: 'SkillEntity';
+      id?: string | null;
+      attributes?: {
+        __typename?: 'Skill';
+        updatedAt?: any | null;
+        createdAt?: any | null;
+        Name: string;
+        publishedAt?: any | null;
+        BackgroundColor?: string | null;
+        ImageUrl?: {
+          __typename?: 'UploadFileEntityResponse';
+          data?: {
+            __typename?: 'UploadFileEntity';
+            id?: string | null;
+            attributes?: {
+              __typename?: 'UploadFile';
+              url: string;
+              previewUrl?: string | null;
+              mime: string;
+              name: string;
+            } | null;
+          } | null;
+        } | null;
+      } | null;
+    }>;
+  } | null;
+};
 
-export type SkillsQuery = { __typename?: 'Query', skills?: { __typename?: 'SkillEntityResponseCollection', data: Array<{ __typename?: 'SkillEntity', id?: string | null, attributes?: { __typename?: 'Skill', updatedAt?: any | null, createdAt?: any | null, Name: string, publishedAt?: any | null, BackgroundColor?: string | null, ImageUrl?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string, previewUrl?: string | null, mime: string, name: string } | null } | null } | null } | null }> } | null };
+export type GetAllTagsQueryVariables = Exact<{
+  filters?: InputMaybe<TagFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<
+    Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>
+  >;
+}>;
+
+export type GetAllTagsQuery = {
+  __typename?: 'Query';
+  tags?: {
+    __typename?: 'TagEntityResponseCollection';
+    data: Array<{
+      __typename?: 'TagEntity';
+      id?: string | null;
+      attributes?: {
+        __typename?: 'Tag';
+        tag: string;
+        publishedAt?: any | null;
+      } | null;
+    }>;
+  } | null;
+};
 
 export type TestimonialsQueryVariables = Exact<{
   filters?: InputMaybe<TestimonialFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>>;
+  sort?: InputMaybe<
+    Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>
+  >;
 }>;
 
-
-export type TestimonialsQuery = { __typename?: 'Query', testimonials?: { __typename?: 'TestimonialEntityResponseCollection', data: Array<{ __typename?: 'TestimonialEntity', id?: string | null, attributes?: { __typename?: 'Testimonial', publishedAt?: any | null, createdAt?: any | null, updatedAt?: any | null, Compagny?: string | null, Feedback?: string | null, Name: string, ImageUrl?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string, previewUrl?: string | null, mime: string, name: string } | null } | null } | null } | null }> } | null };
+export type TestimonialsQuery = {
+  __typename?: 'Query';
+  testimonials?: {
+    __typename?: 'TestimonialEntityResponseCollection';
+    data: Array<{
+      __typename?: 'TestimonialEntity';
+      id?: string | null;
+      attributes?: {
+        __typename?: 'Testimonial';
+        publishedAt?: any | null;
+        createdAt?: any | null;
+        updatedAt?: any | null;
+        Compagny?: string | null;
+        Feedback?: string | null;
+        Name: string;
+        ImageUrl?: {
+          __typename?: 'UploadFileEntityResponse';
+          data?: {
+            __typename?: 'UploadFileEntity';
+            id?: string | null;
+            attributes?: {
+              __typename?: 'UploadFile';
+              url: string;
+              previewUrl?: string | null;
+              mime: string;
+              name: string;
+            } | null;
+          } | null;
+        } | null;
+      } | null;
+    }>;
+  } | null;
+};
 
 export type WorksQueryVariables = Exact<{
   filters?: InputMaybe<WorkFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>>;
+  sort?: InputMaybe<
+    Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>
+  >;
 }>;
 
-
-export type WorksQuery = { __typename?: 'Query', works?: { __typename?: 'WorkEntityResponseCollection', data: Array<{ __typename?: 'WorkEntity', id?: string | null, attributes?: { __typename?: 'Work', updatedAt?: any | null, createdAt?: any | null, publishedAt?: any | null, Description?: string | null, Title: string, CodeLink?: string | null, ProjectLink?: string | null, Tags?: Enum_Work_Tags | null, ImageUrl: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string, previewUrl?: string | null, mime: string, name: string } | null } | null } } | null }> } | null };
+export type WorksQuery = {
+  __typename?: 'Query';
+  works?: {
+    __typename?: 'WorkEntityResponseCollection';
+    data: Array<{
+      __typename?: 'WorkEntity';
+      id?: string | null;
+      attributes?: {
+        __typename?: 'Work';
+        updatedAt?: any | null;
+        createdAt?: any | null;
+        publishedAt?: any | null;
+        Description: string;
+        Title: string;
+        CodeLink?: string | null;
+        ProjectLink: string;
+        ImageUrl: {
+          __typename?: 'UploadFileEntityResponse';
+          data?: {
+            __typename?: 'UploadFileEntity';
+            id?: string | null;
+            attributes?: {
+              __typename?: 'UploadFile';
+              url: string;
+              previewUrl?: string | null;
+              mime: string;
+              name: string;
+            } | null;
+          } | null;
+        };
+        tags?: {
+          __typename?: 'TagRelationResponseCollection';
+          data: Array<{
+            __typename?: 'TagEntity';
+            id?: string | null;
+            attributes?: { __typename?: 'Tag'; tag: string } | null;
+          }>;
+        } | null;
+      } | null;
+    }>;
+  } | null;
+};
 
 export type WorkExperiencesQueryVariables = Exact<{
   filters?: InputMaybe<WorkExperienceFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>>;
+  sort?: InputMaybe<
+    Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>
+  >;
 }>;
 
-
-export type WorkExperiencesQuery = { __typename?: 'Query', workExperiences?: { __typename?: 'WorkExperienceEntityResponseCollection', data: Array<{ __typename?: 'WorkExperienceEntity', id?: string | null, attributes?: { __typename?: 'WorkExperience', publishedAt?: any | null, Description?: string | null, updatedAt?: any | null, createdAt?: any | null, Compagny?: string | null } | null }> } | null };
-
+export type WorkExperiencesQuery = {
+  __typename?: 'Query';
+  workExperiences?: {
+    __typename?: 'WorkExperienceEntityResponseCollection';
+    data: Array<{
+      __typename?: 'WorkExperienceEntity';
+      id?: string | null;
+      attributes?: {
+        __typename?: 'WorkExperience';
+        publishedAt?: any | null;
+        Description?: string | null;
+        updatedAt?: any | null;
+        createdAt?: any | null;
+        Compagny?: string | null;
+      } | null;
+    }>;
+  } | null;
+};
 
 export const GetOneAboutDocument = gql`
-    query getOneAbout($id: ID) {
-  about(id: $id) {
-    data {
-      id
-      attributes {
-        createdAt
-        updatedAt
-        Description
-        Title
-        publishedAt
-        ImageUrl {
-          data {
-            id
-            attributes {
-              url
-              previewUrl
-              mime
-              name
+  query getOneAbout($id: ID) {
+    about(id: $id) {
+      data {
+        id
+        attributes {
+          createdAt
+          updatedAt
+          Description
+          Title
+          publishedAt
+          ImageUrl {
+            data {
+              id
+              attributes {
+                url
+                previewUrl
+                mime
+                name
+              }
             }
           }
         }
       }
     }
   }
-}
-    `;
+`;
 
 /**
  * __useGetOneAboutQuery__
@@ -1653,49 +1952,75 @@ export const GetOneAboutDocument = gql`
  *   },
  * });
  */
-export function useGetOneAboutQuery(baseOptions?: Apollo.QueryHookOptions<GetOneAboutQuery, GetOneAboutQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetOneAboutQuery, GetOneAboutQueryVariables>(GetOneAboutDocument, options);
-      }
-export function useGetOneAboutLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetOneAboutQuery, GetOneAboutQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetOneAboutQuery, GetOneAboutQueryVariables>(GetOneAboutDocument, options);
-        }
+export function useGetOneAboutQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetOneAboutQuery,
+    GetOneAboutQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetOneAboutQuery, GetOneAboutQueryVariables>(
+    GetOneAboutDocument,
+    options
+  );
+}
+export function useGetOneAboutLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetOneAboutQuery,
+    GetOneAboutQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetOneAboutQuery, GetOneAboutQueryVariables>(
+    GetOneAboutDocument,
+    options
+  );
+}
 export type GetOneAboutQueryHookResult = ReturnType<typeof useGetOneAboutQuery>;
-export type GetOneAboutLazyQueryHookResult = ReturnType<typeof useGetOneAboutLazyQuery>;
-export type GetOneAboutQueryResult = Apollo.QueryResult<GetOneAboutQuery, GetOneAboutQueryVariables>;
+export type GetOneAboutLazyQueryHookResult = ReturnType<
+  typeof useGetOneAboutLazyQuery
+>;
+export type GetOneAboutQueryResult = Apollo.QueryResult<
+  GetOneAboutQuery,
+  GetOneAboutQueryVariables
+>;
 export const GetAllAboutDocument = gql`
-    query getAllAbout($filters: AboutFiltersInput, $pagination: PaginationArg = {}, $publicationState: PublicationState = LIVE, $sort: [String] = []) {
-  abouts(
-    filters: $filters
-    pagination: $pagination
-    publicationState: $publicationState
-    sort: $sort
+  query getAllAbout(
+    $filters: AboutFiltersInput
+    $pagination: PaginationArg = {}
+    $publicationState: PublicationState = LIVE
+    $sort: [String] = []
   ) {
-    data {
-      id
-      attributes {
-        createdAt
-        updatedAt
-        Description
-        Title
-        publishedAt
-        ImageUrl {
-          data {
-            id
-            attributes {
-              url
-              previewUrl
-              mime
-              name
+    abouts(
+      filters: $filters
+      pagination: $pagination
+      publicationState: $publicationState
+      sort: $sort
+    ) {
+      data {
+        id
+        attributes {
+          createdAt
+          updatedAt
+          Description
+          Title
+          publishedAt
+          ImageUrl {
+            data {
+              id
+              attributes {
+                url
+                previewUrl
+                mime
+                name
+              }
             }
           }
         }
       }
     }
   }
-}
-    `;
+`;
 
 /**
  * __useGetAllAboutQuery__
@@ -1716,36 +2041,60 @@ export const GetAllAboutDocument = gql`
  *   },
  * });
  */
-export function useGetAllAboutQuery(baseOptions?: Apollo.QueryHookOptions<GetAllAboutQuery, GetAllAboutQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetAllAboutQuery, GetAllAboutQueryVariables>(GetAllAboutDocument, options);
-      }
-export function useGetAllAboutLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAllAboutQuery, GetAllAboutQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetAllAboutQuery, GetAllAboutQueryVariables>(GetAllAboutDocument, options);
-        }
-export type GetAllAboutQueryHookResult = ReturnType<typeof useGetAllAboutQuery>;
-export type GetAllAboutLazyQueryHookResult = ReturnType<typeof useGetAllAboutLazyQuery>;
-export type GetAllAboutQueryResult = Apollo.QueryResult<GetAllAboutQuery, GetAllAboutQueryVariables>;
-export const LoginDocument = gql`
-    mutation login($input: UsersPermissionsLoginInput!) {
-  login(input: $input) {
-    user {
-      id
-      confirmed
-      email
-      username
-      role {
-        id
-        name
-        description
-      }
-    }
-    jwt
-  }
+export function useGetAllAboutQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetAllAboutQuery,
+    GetAllAboutQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetAllAboutQuery, GetAllAboutQueryVariables>(
+    GetAllAboutDocument,
+    options
+  );
 }
-    `;
-export type LoginMutationFn = Apollo.MutationFunction<LoginMutation, LoginMutationVariables>;
+export function useGetAllAboutLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetAllAboutQuery,
+    GetAllAboutQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetAllAboutQuery, GetAllAboutQueryVariables>(
+    GetAllAboutDocument,
+    options
+  );
+}
+export type GetAllAboutQueryHookResult = ReturnType<typeof useGetAllAboutQuery>;
+export type GetAllAboutLazyQueryHookResult = ReturnType<
+  typeof useGetAllAboutLazyQuery
+>;
+export type GetAllAboutQueryResult = Apollo.QueryResult<
+  GetAllAboutQuery,
+  GetAllAboutQueryVariables
+>;
+export const LoginDocument = gql`
+  mutation login($input: UsersPermissionsLoginInput!) {
+    login(input: $input) {
+      user {
+        id
+        confirmed
+        email
+        username
+        role {
+          id
+          name
+          description
+        }
+      }
+      jwt
+    }
+  }
+`;
+export type LoginMutationFn = Apollo.MutationFunction<
+  LoginMutation,
+  LoginMutationVariables
+>;
 
 /**
  * __useLoginMutation__
@@ -1764,33 +2113,47 @@ export type LoginMutationFn = Apollo.MutationFunction<LoginMutation, LoginMutati
  *   },
  * });
  */
-export function useLoginMutation(baseOptions?: Apollo.MutationHookOptions<LoginMutation, LoginMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<LoginMutation, LoginMutationVariables>(LoginDocument, options);
-      }
+export function useLoginMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    LoginMutation,
+    LoginMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<LoginMutation, LoginMutationVariables>(
+    LoginDocument,
+    options
+  );
+}
 export type LoginMutationHookResult = ReturnType<typeof useLoginMutation>;
 export type LoginMutationResult = Apollo.MutationResult<LoginMutation>;
-export type LoginMutationOptions = Apollo.BaseMutationOptions<LoginMutation, LoginMutationVariables>;
+export type LoginMutationOptions = Apollo.BaseMutationOptions<
+  LoginMutation,
+  LoginMutationVariables
+>;
 export const RegisterDocument = gql`
-    mutation register($input: UsersPermissionsRegisterInput!) {
-  register(input: $input) {
-    user {
-      id
-      username
-      email
-      confirmed
-      blocked
-      role {
+  mutation register($input: UsersPermissionsRegisterInput!) {
+    register(input: $input) {
+      user {
         id
-        name
-        description
+        username
+        email
+        confirmed
+        blocked
+        role {
+          id
+          name
+          description
+        }
       }
+      jwt
     }
-    jwt
   }
-}
-    `;
-export type RegisterMutationFn = Apollo.MutationFunction<RegisterMutation, RegisterMutationVariables>;
+`;
+export type RegisterMutationFn = Apollo.MutationFunction<
+  RegisterMutation,
+  RegisterMutationVariables
+>;
 
 /**
  * __useRegisterMutation__
@@ -1809,45 +2172,61 @@ export type RegisterMutationFn = Apollo.MutationFunction<RegisterMutation, Regis
  *   },
  * });
  */
-export function useRegisterMutation(baseOptions?: Apollo.MutationHookOptions<RegisterMutation, RegisterMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<RegisterMutation, RegisterMutationVariables>(RegisterDocument, options);
-      }
+export function useRegisterMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    RegisterMutation,
+    RegisterMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<RegisterMutation, RegisterMutationVariables>(
+    RegisterDocument,
+    options
+  );
+}
 export type RegisterMutationHookResult = ReturnType<typeof useRegisterMutation>;
 export type RegisterMutationResult = Apollo.MutationResult<RegisterMutation>;
-export type RegisterMutationOptions = Apollo.BaseMutationOptions<RegisterMutation, RegisterMutationVariables>;
+export type RegisterMutationOptions = Apollo.BaseMutationOptions<
+  RegisterMutation,
+  RegisterMutationVariables
+>;
 export const ExperiencesDocument = gql`
-    query Experiences($filters: ExperienceFiltersInput, $pagination: PaginationArg = {}, $publicationState: PublicationState = LIVE, $sort: [String] = []) {
-  experiences(
-    filters: $filters
-    pagination: $pagination
-    publicationState: $publicationState
-    sort: $sort
+  query Experiences(
+    $filters: ExperienceFiltersInput
+    $pagination: PaginationArg = {}
+    $publicationState: PublicationState = LIVE
+    $sort: [String] = []
   ) {
-    data {
-      id
-      attributes {
-        createdAt
-        updatedAt
-        publishedAt
-        Year
-        work_experiences {
-          data {
-            id
-            attributes {
-              Name
-              Description
-              createdAt
-              updatedAt
-              Compagny
+    experiences(
+      filters: $filters
+      pagination: $pagination
+      publicationState: $publicationState
+      sort: $sort
+    ) {
+      data {
+        id
+        attributes {
+          createdAt
+          updatedAt
+          publishedAt
+          Year
+          work_experiences {
+            data {
+              id
+              attributes {
+                Name
+                Description
+                createdAt
+                updatedAt
+                Compagny
+              }
             }
           }
         }
       }
     }
   }
-}
-    `;
+`;
 
 /**
  * __useExperiencesQuery__
@@ -1868,49 +2247,75 @@ export const ExperiencesDocument = gql`
  *   },
  * });
  */
-export function useExperiencesQuery(baseOptions?: Apollo.QueryHookOptions<ExperiencesQuery, ExperiencesQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<ExperiencesQuery, ExperiencesQueryVariables>(ExperiencesDocument, options);
-      }
-export function useExperiencesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ExperiencesQuery, ExperiencesQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<ExperiencesQuery, ExperiencesQueryVariables>(ExperiencesDocument, options);
-        }
+export function useExperiencesQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    ExperiencesQuery,
+    ExperiencesQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<ExperiencesQuery, ExperiencesQueryVariables>(
+    ExperiencesDocument,
+    options
+  );
+}
+export function useExperiencesLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    ExperiencesQuery,
+    ExperiencesQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<ExperiencesQuery, ExperiencesQueryVariables>(
+    ExperiencesDocument,
+    options
+  );
+}
 export type ExperiencesQueryHookResult = ReturnType<typeof useExperiencesQuery>;
-export type ExperiencesLazyQueryHookResult = ReturnType<typeof useExperiencesLazyQuery>;
-export type ExperiencesQueryResult = Apollo.QueryResult<ExperiencesQuery, ExperiencesQueryVariables>;
+export type ExperiencesLazyQueryHookResult = ReturnType<
+  typeof useExperiencesLazyQuery
+>;
+export type ExperiencesQueryResult = Apollo.QueryResult<
+  ExperiencesQuery,
+  ExperiencesQueryVariables
+>;
 export const SkillsDocument = gql`
-    query Skills($filters: SkillFiltersInput, $pagination: PaginationArg = {}, $publicationState: PublicationState = LIVE, $sort: [String] = []) {
-  skills(
-    sort: $sort
-    publicationState: $publicationState
-    pagination: $pagination
-    filters: $filters
+  query Skills(
+    $filters: SkillFiltersInput
+    $pagination: PaginationArg = {}
+    $publicationState: PublicationState = LIVE
+    $sort: [String] = []
   ) {
-    data {
-      id
-      attributes {
-        updatedAt
-        createdAt
-        Name
-        publishedAt
-        BackgroundColor
-        ImageUrl {
-          data {
-            id
-            attributes {
-              url
-              previewUrl
-              mime
-              name
+    skills(
+      sort: $sort
+      publicationState: $publicationState
+      pagination: $pagination
+      filters: $filters
+    ) {
+      data {
+        id
+        attributes {
+          updatedAt
+          createdAt
+          Name
+          publishedAt
+          BackgroundColor
+          ImageUrl {
+            data {
+              id
+              attributes {
+                url
+                previewUrl
+                mime
+                name
+              }
             }
           }
         }
       }
     }
   }
-}
-    `;
+`;
 
 /**
  * __useSkillsQuery__
@@ -1931,50 +2336,147 @@ export const SkillsDocument = gql`
  *   },
  * });
  */
-export function useSkillsQuery(baseOptions?: Apollo.QueryHookOptions<SkillsQuery, SkillsQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<SkillsQuery, SkillsQueryVariables>(SkillsDocument, options);
-      }
-export function useSkillsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SkillsQuery, SkillsQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<SkillsQuery, SkillsQueryVariables>(SkillsDocument, options);
-        }
+export function useSkillsQuery(
+  baseOptions?: Apollo.QueryHookOptions<SkillsQuery, SkillsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<SkillsQuery, SkillsQueryVariables>(
+    SkillsDocument,
+    options
+  );
+}
+
+export function useSkillsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<SkillsQuery, SkillsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<SkillsQuery, SkillsQueryVariables>(
+    SkillsDocument,
+    options
+  );
+}
+
 export type SkillsQueryHookResult = ReturnType<typeof useSkillsQuery>;
 export type SkillsLazyQueryHookResult = ReturnType<typeof useSkillsLazyQuery>;
-export type SkillsQueryResult = Apollo.QueryResult<SkillsQuery, SkillsQueryVariables>;
-export const TestimonialsDocument = gql`
-    query Testimonials($filters: TestimonialFiltersInput, $pagination: PaginationArg = {}, $publicationState: PublicationState = LIVE, $sort: [String] = []) {
-  testimonials(
-    filters: $filters
-    pagination: $pagination
-    publicationState: $publicationState
-    sort: $sort
+export type SkillsQueryResult = Apollo.QueryResult<
+  SkillsQuery,
+  SkillsQueryVariables
+>;
+export const GetAllTagsDocument = gql`
+  query GetAllTags(
+    $filters: TagFiltersInput
+    $pagination: PaginationArg = {}
+    $publicationState: PublicationState = LIVE
+    $sort: [String] = []
   ) {
-    data {
-      id
-      attributes {
-        publishedAt
-        createdAt
-        updatedAt
-        Compagny
-        Feedback
-        Name
-        ImageUrl {
-          data {
-            id
-            attributes {
-              url
-              previewUrl
-              mime
-              name
+    tags(
+      filters: $filters
+      pagination: $pagination
+      publicationState: $publicationState
+      sort: $sort
+    ) {
+      data {
+        id
+        attributes {
+          tag
+          publishedAt
+        }
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetAllTagsQuery__
+ *
+ * To run a query within a React component, call `useGetAllTagsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAllTagsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAllTagsQuery({
+ *   variables: {
+ *      filters: // value for 'filters'
+ *      pagination: // value for 'pagination'
+ *      publicationState: // value for 'publicationState'
+ *      sort: // value for 'sort'
+ *   },
+ * });
+ */
+export function useGetAllTagsQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetAllTagsQuery,
+    GetAllTagsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetAllTagsQuery, GetAllTagsQueryVariables>(
+    GetAllTagsDocument,
+    options
+  );
+}
+
+export function useGetAllTagsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetAllTagsQuery,
+    GetAllTagsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetAllTagsQuery, GetAllTagsQueryVariables>(
+    GetAllTagsDocument,
+    options
+  );
+}
+
+export type GetAllTagsQueryHookResult = ReturnType<typeof useGetAllTagsQuery>;
+export type GetAllTagsLazyQueryHookResult = ReturnType<
+  typeof useGetAllTagsLazyQuery
+>;
+export type GetAllTagsQueryResult = Apollo.QueryResult<
+  GetAllTagsQuery,
+  GetAllTagsQueryVariables
+>;
+export const TestimonialsDocument = gql`
+  query Testimonials(
+    $filters: TestimonialFiltersInput
+    $pagination: PaginationArg = {}
+    $publicationState: PublicationState = LIVE
+    $sort: [String] = []
+  ) {
+    testimonials(
+      filters: $filters
+      pagination: $pagination
+      publicationState: $publicationState
+      sort: $sort
+    ) {
+      data {
+        id
+        attributes {
+          publishedAt
+          createdAt
+          updatedAt
+          Compagny
+          Feedback
+          Name
+          ImageUrl {
+            data {
+              id
+              attributes {
+                url
+                previewUrl
+                mime
+                name
+              }
             }
           }
         }
       }
     }
   }
-}
-    `;
+`;
 
 /**
  * __useTestimonialsQuery__
@@ -1995,52 +2497,87 @@ export const TestimonialsDocument = gql`
  *   },
  * });
  */
-export function useTestimonialsQuery(baseOptions?: Apollo.QueryHookOptions<TestimonialsQuery, TestimonialsQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<TestimonialsQuery, TestimonialsQueryVariables>(TestimonialsDocument, options);
-      }
-export function useTestimonialsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TestimonialsQuery, TestimonialsQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<TestimonialsQuery, TestimonialsQueryVariables>(TestimonialsDocument, options);
-        }
-export type TestimonialsQueryHookResult = ReturnType<typeof useTestimonialsQuery>;
-export type TestimonialsLazyQueryHookResult = ReturnType<typeof useTestimonialsLazyQuery>;
-export type TestimonialsQueryResult = Apollo.QueryResult<TestimonialsQuery, TestimonialsQueryVariables>;
+export function useTestimonialsQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    TestimonialsQuery,
+    TestimonialsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<TestimonialsQuery, TestimonialsQueryVariables>(
+    TestimonialsDocument,
+    options
+  );
+}
+export function useTestimonialsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    TestimonialsQuery,
+    TestimonialsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<TestimonialsQuery, TestimonialsQueryVariables>(
+    TestimonialsDocument,
+    options
+  );
+}
+export type TestimonialsQueryHookResult = ReturnType<
+  typeof useTestimonialsQuery
+>;
+export type TestimonialsLazyQueryHookResult = ReturnType<
+  typeof useTestimonialsLazyQuery
+>;
+export type TestimonialsQueryResult = Apollo.QueryResult<
+  TestimonialsQuery,
+  TestimonialsQueryVariables
+>;
 export const WorksDocument = gql`
-    query Works($filters: WorkFiltersInput, $pagination: PaginationArg = {}, $publicationState: PublicationState = LIVE, $sort: [String] = []) {
-  works(
-    sort: $sort
-    publicationState: $publicationState
-    pagination: $pagination
-    filters: $filters
+  query Works(
+    $filters: WorkFiltersInput
+    $pagination: PaginationArg = {}
+    $publicationState: PublicationState = LIVE
+    $sort: [String] = []
   ) {
-    data {
-      id
-      attributes {
-        ImageUrl {
-          data {
-            id
-            attributes {
-              url
-              previewUrl
-              mime
-              name
+    works(
+      sort: $sort
+      publicationState: $publicationState
+      pagination: $pagination
+      filters: $filters
+    ) {
+      data {
+        id
+        attributes {
+          ImageUrl {
+            data {
+              id
+              attributes {
+                url
+                previewUrl
+                mime
+                name
+              }
+            }
+          }
+          updatedAt
+          createdAt
+          publishedAt
+          Description
+          Title
+          CodeLink
+          ProjectLink
+          tags {
+            data {
+              id
+              attributes {
+                tag
+              }
             }
           }
         }
-        updatedAt
-        createdAt
-        publishedAt
-        Description
-        Title
-        CodeLink
-        ProjectLink
-        Tags
       }
     }
   }
-}
-    `;
+`;
 
 /**
  * __useWorksQuery__
@@ -2061,38 +2598,56 @@ export const WorksDocument = gql`
  *   },
  * });
  */
-export function useWorksQuery(baseOptions?: Apollo.QueryHookOptions<WorksQuery, WorksQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<WorksQuery, WorksQueryVariables>(WorksDocument, options);
-      }
-export function useWorksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<WorksQuery, WorksQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<WorksQuery, WorksQueryVariables>(WorksDocument, options);
-        }
+export function useWorksQuery(
+  baseOptions?: Apollo.QueryHookOptions<WorksQuery, WorksQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<WorksQuery, WorksQueryVariables>(
+    WorksDocument,
+    options
+  );
+}
+export function useWorksLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<WorksQuery, WorksQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<WorksQuery, WorksQueryVariables>(
+    WorksDocument,
+    options
+  );
+}
 export type WorksQueryHookResult = ReturnType<typeof useWorksQuery>;
 export type WorksLazyQueryHookResult = ReturnType<typeof useWorksLazyQuery>;
-export type WorksQueryResult = Apollo.QueryResult<WorksQuery, WorksQueryVariables>;
+export type WorksQueryResult = Apollo.QueryResult<
+  WorksQuery,
+  WorksQueryVariables
+>;
 export const WorkExperiencesDocument = gql`
-    query WorkExperiences($filters: WorkExperienceFiltersInput, $pagination: PaginationArg = {}, $publicationState: PublicationState = LIVE, $sort: [String] = []) {
-  workExperiences(
-    sort: $sort
-    publicationState: $publicationState
-    pagination: $pagination
-    filters: $filters
+  query WorkExperiences(
+    $filters: WorkExperienceFiltersInput
+    $pagination: PaginationArg = {}
+    $publicationState: PublicationState = LIVE
+    $sort: [String] = []
   ) {
-    data {
-      id
-      attributes {
-        publishedAt
-        Description
-        updatedAt
-        createdAt
-        Compagny
+    workExperiences(
+      sort: $sort
+      publicationState: $publicationState
+      pagination: $pagination
+      filters: $filters
+    ) {
+      data {
+        id
+        attributes {
+          publishedAt
+          Description
+          updatedAt
+          createdAt
+          Compagny
+        }
       }
     }
   }
-}
-    `;
+`;
 
 /**
  * __useWorkExperiencesQuery__
@@ -2113,14 +2668,37 @@ export const WorkExperiencesDocument = gql`
  *   },
  * });
  */
-export function useWorkExperiencesQuery(baseOptions?: Apollo.QueryHookOptions<WorkExperiencesQuery, WorkExperiencesQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<WorkExperiencesQuery, WorkExperiencesQueryVariables>(WorkExperiencesDocument, options);
-      }
-export function useWorkExperiencesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<WorkExperiencesQuery, WorkExperiencesQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<WorkExperiencesQuery, WorkExperiencesQueryVariables>(WorkExperiencesDocument, options);
-        }
-export type WorkExperiencesQueryHookResult = ReturnType<typeof useWorkExperiencesQuery>;
-export type WorkExperiencesLazyQueryHookResult = ReturnType<typeof useWorkExperiencesLazyQuery>;
-export type WorkExperiencesQueryResult = Apollo.QueryResult<WorkExperiencesQuery, WorkExperiencesQueryVariables>;
+export function useWorkExperiencesQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    WorkExperiencesQuery,
+    WorkExperiencesQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<WorkExperiencesQuery, WorkExperiencesQueryVariables>(
+    WorkExperiencesDocument,
+    options
+  );
+}
+export function useWorkExperiencesLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    WorkExperiencesQuery,
+    WorkExperiencesQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    WorkExperiencesQuery,
+    WorkExperiencesQueryVariables
+  >(WorkExperiencesDocument, options);
+}
+export type WorkExperiencesQueryHookResult = ReturnType<
+  typeof useWorkExperiencesQuery
+>;
+export type WorkExperiencesLazyQueryHookResult = ReturnType<
+  typeof useWorkExperiencesLazyQuery
+>;
+export type WorkExperiencesQueryResult = Apollo.QueryResult<
+  WorkExperiencesQuery,
+  WorkExperiencesQueryVariables
+>;

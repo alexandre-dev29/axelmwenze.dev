@@ -21,7 +21,9 @@ export function NavBar(props: NavBarProps) {
   return (
     <nav className="app__navbar">
       <div className="app__navbar-logo">
-        <h1 className={'text-xl'}>Axel mwenze</h1>
+        <h2 className="head-text" style={{ fontSize: '1.7rem' }}>
+          Axel <span>mwenze</span>
+        </h2>
       </div>
       <ul className="app__navbar-links">
         {listLinks.map((item, index) => (
@@ -44,11 +46,11 @@ export function NavBar(props: NavBarProps) {
           >
             <HiX onClick={() => setToggle(false)} />
             <ul>
-              {['home', 'about', 'work', 'skills', 'contact'].map((item) => (
-                <li key={item}>
-                  <a href={`#${item}`} onClick={() => setToggle(false)}>
-                    {item}
-                  </a>
+              {listLinks.map((item, index) => (
+                <li key={`item-${index}`}>
+                  <Link href={`${item.link}`}>
+                    <p>{item.linkName}</p>
+                  </Link>
                 </li>
               ))}
             </ul>

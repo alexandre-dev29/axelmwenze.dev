@@ -12,7 +12,7 @@
   -webkit-backdrop-filter: blur(4px);
   border: 1px solid rgba(255, 255, 255, 0.18);
 
-  z-index: 2;
+  z-index: 10;
 }
 
 .app__navbar-logo {
@@ -91,6 +91,7 @@
   justify-content: center;
   align-items: center;
   background-color: var(--secondary-color);
+  z-index: 50;
 
 
   svg {

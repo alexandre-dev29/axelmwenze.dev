@@ -5,7 +5,7 @@ schema {
   mutation: Mutation
 }
 
-union GenericMorph = About | Brand | Contact | Experience | I18NLocale | Skill | Testimonial | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Work | WorkExperience
+union GenericMorph = About | Brand | Contact | Experience | I18NLocale | Skill | Tag | Testimonial | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Work | WorkExperience
 
 type About {
   Description: String
@@ -124,6 +124,7 @@ type Mutation {
   createContact(data: ContactInput!): ContactEntityResponse
   createExperience(data: ExperienceInput!): ExperienceEntityResponse
   createSkill(data: SkillInput!): SkillEntityResponse
+  createTag(data: TagInput!): TagEntityResponse
   createTestimonial(data: TestimonialInput!): TestimonialEntityResponse
   createUploadFile(data: UploadFileInput!): UploadFileEntityResponse
   createUploadFolder(data: UploadFolderInput!): UploadFolderEntityResponse
@@ -138,6 +139,7 @@ type Mutation {
   deleteContact(id: ID!): ContactEntityResponse
   deleteExperience(id: ID!): ExperienceEntityResponse
   deleteSkill(id: ID!): SkillEntityResponse
+  deleteTag(id: ID!): TagEntityResponse
   deleteTestimonial(id: ID!): TestimonialEntityResponse
   deleteUploadFile(id: ID!): UploadFileEntityResponse
   deleteUploadFolder(id: ID!): UploadFolderEntityResponse
@@ -164,6 +166,7 @@ type Mutation {
   updateExperience(data: ExperienceInput!, id: ID!): ExperienceEntityResponse
   updateFileInfo(id: ID!, info: FileInfoInput): UploadFileEntityResponse!
   updateSkill(data: SkillInput!, id: ID!): SkillEntityResponse
+  updateTag(data: TagInput!, id: ID!): TagEntityResponse
   updateTestimonial(data: TestimonialInput!, id: ID!): TestimonialEntityResponse
   updateUploadFile(data: UploadFileInput!, id: ID!): UploadFileEntityResponse
   updateUploadFolder(data: UploadFolderInput!, id: ID!): UploadFolderEntityResponse
@@ -197,6 +200,8 @@ type Query {
   me: UsersPermissionsMe
   skill(id: ID): SkillEntityResponse
   skills(filters: SkillFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): SkillEntityResponseCollection
+  tag(id: ID): TagEntityResponse
+  tags(filters: TagFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): TagEntityResponseCollection
   testimonial(id: ID): TestimonialEntityResponse
   testimonials(filters: TestimonialFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): TestimonialEntityResponseCollection
   uploadFile(id: ID): UploadFileEntityResponse
@@ -238,6 +243,31 @@ type SkillEntityResponse {
 type SkillEntityResponseCollection {
   data: [SkillEntity!]!
   meta: ResponseCollectionMeta!
+}
+
+type Tag {
+  createdAt: DateTime
+  publishedAt: DateTime
+  tag: String!
+  updatedAt: DateTime
+}
+
+type TagEntity {
+  attributes: Tag
+  id: ID
+}
+
+type TagEntityResponse {
+  data: TagEntity
+}
+
+type TagEntityResponseCollection {
+  data: [TagEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type TagRelationResponseCollection {
+  data: [TagEntity!]!
 }
 
 type Testimonial {
@@ -439,13 +469,13 @@ type UsersPermissionsUserRelationResponseCollection {
 
 type Work {
   CodeLink: String
-  Description: String
+  Description: String!
   ImageUrl: UploadFileEntityResponse!
-  ProjectLink: String
-  Tags: ENUM_WORK_TAGS
+  ProjectLink: String!
   Title: String!
   createdAt: DateTime
   publishedAt: DateTime
+  tags(filters: TagFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): TagRelationResponseCollection
   updatedAt: DateTime
 }
 
@@ -488,14 +518,6 @@ type WorkExperienceEntityResponseCollection {
 
 type WorkExperienceRelationResponseCollection {
   data: [WorkExperienceEntity!]!
-}
-
-enum ENUM_WORK_TAGS {
-  Backend
-  Frontend
-  Fullstack
-  Mobile
-  Other
 }
 
 enum PublicationState {
@@ -797,6 +819,22 @@ input StringFilterInput {
   startsWith: String
 }
 
+input TagFiltersInput {
+  and: [TagFiltersInput]
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  not: TagFiltersInput
+  or: [TagFiltersInput]
+  publishedAt: DateTimeFilterInput
+  tag: StringFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input TagInput {
+  publishedAt: DateTime
+  tag: String
+}
+
 input TestimonialFiltersInput {
   Compagny: StringFilterInput
   Feedback: StringFilterInput
@@ -985,7 +1023,6 @@ input WorkFiltersInput {
   CodeLink: StringFilterInput
   Description: StringFilterInput
   ProjectLink: StringFilterInput
-  Tags: StringFilterInput
   Title: StringFilterInput
   and: [WorkFiltersInput]
   createdAt: DateTimeFilterInput
@@ -993,6 +1030,7 @@ input WorkFiltersInput {
   not: WorkFiltersInput
   or: [WorkFiltersInput]
   publishedAt: DateTimeFilterInput
+  tags: TagFiltersInput
   updatedAt: DateTimeFilterInput
 }
 
@@ -1001,7 +1039,7 @@ input WorkInput {
   Description: String
   ImageUrl: ID
   ProjectLink: String
-  Tags: ENUM_WORK_TAGS
   Title: String
   publishedAt: DateTime
+  tags: [ID]
 }

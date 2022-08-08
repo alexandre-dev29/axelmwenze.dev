@@ -5,5 +5,6 @@ export * from './nav-bar/nav-bar';
 export * from './footer/footer';
 export * from './layout/layout';
 export * from './loading-state/loading-state';
+export * from './work-card/work-card';
 export * from './ThemeConfig';
 export * from './constants';

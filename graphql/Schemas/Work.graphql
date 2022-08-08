@@ -21,7 +21,14 @@ query Works($filters: WorkFiltersInput, $pagination: PaginationArg = {}, $public
         Title
         CodeLink
         ProjectLink
-        Tags
+        tags{
+          data {
+            id
+            attributes {
+              tag
+            }
+          }
+        }
       }
     }
   }
