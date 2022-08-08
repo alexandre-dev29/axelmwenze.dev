@@ -9,7 +9,7 @@ export function Layout({ children }: LayoutProps) {
   return (
     <div>
       <NavBar />
-      <div className={'w-full flex flex-row'}>{children}</div>
+      <div className={'w-full flex flex-row '}>{children}</div>
       <Footer />
     </div>
   );

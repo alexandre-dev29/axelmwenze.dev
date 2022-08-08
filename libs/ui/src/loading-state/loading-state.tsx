@@ -1,5 +1,5 @@
 import styles from './loading-state.module.scss';
-import { motion } from 'framer-motion';
+import { motion, Transition } from 'framer-motion';
 
 /* eslint-disable-next-line */
 export interface LoadingStateProps {}
@@ -43,9 +43,10 @@ const DotVariants = {
 
 const DotTransition = {
   duration: 0.5,
-  yoyo: Infinity,
+  repeat: Infinity,
   ease: 'easeInOut',
-};
+  repeatType: 'reverse',
+} as Transition;
 
 export function LoadingState(props: LoadingStateProps) {
   return (
