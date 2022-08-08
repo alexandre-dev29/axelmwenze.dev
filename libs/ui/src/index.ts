@@ -6,3 +6,4 @@ export * from './footer/footer';
 export * from './layout/layout';
 export * from './loading-state/loading-state';
 export * from './ThemeConfig';
+export * from './constants';

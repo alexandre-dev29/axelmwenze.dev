@@ -1,4 +1,7 @@
-import styles from './nav-bar.module.scss';
+import { useState } from 'react';
+import { images } from '@next-template-nx/ui';
+import { HiMenuAlt4, HiX } from 'react-icons/hi';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 /* eslint-disable-next-line */
@@ -13,23 +16,46 @@ const listLinks: Array<{ linkName: string; link: string }> = [
 ];
 
 export function NavBar(props: NavBarProps) {
+  const [toggle, setToggle] = useState(false);
+
   return (
-    <div className={'top-0 flex h-[7vh] backdrop-blur-2xl '}>
-      <h1 className={'p-0 m-0 text-2xl w-[10vw] my-auto pl-4 text-violet-600'}>
-        Axel <span className={'text-blue-400'}> Mwenze</span>
-      </h1>
-      <div className={'flex flex-1  p-0 justify-center items-center'}>
-        <ul className={`flex justify-center items-center m-0`}>
-          {listLinks.map(({ linkName, link }, index) => (
-            <li key={index} className={'m-0'}>
-              <Link href={link}>
-                <p className={'p-4 cursor-pointer'}>{linkName}</p>
-              </Link>
-            </li>
-          ))}
-        </ul>
+    <nav className="app__navbar">
+      <div className="app__navbar-logo">
+        <h1 className={'text-xl'}>Axel mwenze</h1>
       </div>
-    </div>
+      <ul className="app__navbar-links">
+        {listLinks.map((item, index) => (
+          <li className="app__flex p-text" key={index}>
+            <div />
+            <Link href={`${item.link}`}>
+              <p>{item.linkName}</p>
+            </Link>
+          </li>
+        ))}
+      </ul>
+
+      <div className="app__navbar-menu">
+        <HiMenuAlt4 onClick={() => setToggle(true)} />
+
+        {toggle && (
+          <motion.div
+            whileInView={{ x: [300, 0] }}
+            transition={{ duration: 0.85, ease: 'easeOut' }}
+          >
+            <HiX onClick={() => setToggle(false)} />
+            <ul>
+              {['home', 'about', 'work', 'skills', 'contact'].map((item) => (
+                <li key={item}>
+                  <a href={`#${item}`} onClick={() => setToggle(false)}>
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </div>
+    </nav>
   );
 }
 
