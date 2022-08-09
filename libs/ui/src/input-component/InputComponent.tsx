@@ -1,25 +1,19 @@
-import {
-  FieldError,
-  FieldErrors,
-  UseFormRegisterReturn,
-} from 'react-hook-form';
+import { FieldError, UseFormRegisterReturn } from 'react-hook-form';
 
 import { HTMLInputTypeAttribute } from 'react';
 
-export default function InputComponent({
+export function InputComponent({
   inputType,
   register,
   errorField,
   errorMsg,
   placeHolder,
-  inputName,
 }: {
   register: UseFormRegisterReturn<string>;
   errorField: FieldError;
   inputType: HTMLInputTypeAttribute;
   errorMsg: string;
   placeHolder: string;
-  inputName: string;
 }) {
   return (
     <div className="app__flex">
@@ -27,7 +21,6 @@ export default function InputComponent({
         className="p-text"
         type={inputType}
         placeholder={placeHolder}
-        name={inputName}
         {...register}
       />
       {errorField && (
@@ -36,3 +29,5 @@ export default function InputComponent({
     </div>
   );
 }
+
+export default InputComponent;

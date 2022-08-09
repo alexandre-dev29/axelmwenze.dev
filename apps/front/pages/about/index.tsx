@@ -1,6 +1,5 @@
 import { useGetAllAboutQuery } from '@next-template-nx/data';
-import { LoadingState } from '@next-template-nx/ui';
-import ProfileContainer from './ProfileContainer';
+import { LoadingState, ProfileContainer } from '@next-template-nx/ui';
 
 /* eslint-disable-next-line */
 export interface AboutProps {

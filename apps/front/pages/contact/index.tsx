@@ -2,8 +2,7 @@ import { useState } from 'react';
 import emailJs from '@emailjs/browser';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import ContactHeader from './ContactHeader';
-import InputComponent from './InputComponent';
+import { ContactHeader, InputComponent } from '@next-template-nx/ui';
 
 /* eslint-disable-next-line */
 export interface ContactProps {}
@@ -65,7 +64,6 @@ export function Contact(props: ContactProps) {
           errorField={errors.username}
           inputType={'text'}
           errorMsg={'the username is required'}
-          inputName={'username'}
           placeHolder={'username'}
         />
         <InputComponent
@@ -73,7 +71,6 @@ export function Contact(props: ContactProps) {
           errorField={errors.subject}
           inputType={'text'}
           errorMsg={'the subject  is required'}
-          inputName={'subject'}
           placeHolder={'subject'}
         />
         <InputComponent
@@ -81,7 +78,6 @@ export function Contact(props: ContactProps) {
           errorField={errors.email}
           inputType={'email'}
           errorMsg={'the email address is required'}
-          inputName={'email'}
           placeHolder={'Email address'}
         />
         <div>

@@ -1,6 +1,6 @@
 import { TbMailOpened, TbPhoneCalling } from 'react-icons/tb';
 
-export default function ContactHeader() {
+export function ContactHeader() {
   return (
     <>
       <h2 className="head-text">Take a coffee & chat with me</h2>
@@ -21,3 +21,5 @@ export default function ContactHeader() {
     </>
   );
 }
+
+export default ContactHeader;

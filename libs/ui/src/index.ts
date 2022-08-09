@@ -8,3 +8,6 @@ export * from './loading-state/loading-state';
 export * from './work-card/work-card';
 export * from './ThemeConfig';
 export * from './constants';
+export * from './profile-container/ProfileContainer';
+export * from './input-component/InputComponent';
+export * from './contact-header/ContactHeader';
