@@ -3,10 +3,10 @@ import {
   FieldErrors,
   UseFormRegisterReturn,
 } from 'react-hook-form';
-import { ContactFormValues } from './index';
+
 import { HTMLInputTypeAttribute } from 'react';
 
-export function InputComponent({
+export default function InputComponent({
   inputType,
   register,
   errorField,

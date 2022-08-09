@@ -2,8 +2,8 @@ import { useState } from 'react';
 import emailJs from '@emailjs/browser';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { InputComponent } from './InputComponent';
-import { ContactHeader } from './ContactHeader';
+import ContactHeader from './ContactHeader';
+import InputComponent from './InputComponent';
 
 /* eslint-disable-next-line */
 export interface ContactProps {}
