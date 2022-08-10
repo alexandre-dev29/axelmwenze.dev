@@ -44,7 +44,14 @@ export function AppWrapper({ children }: AppWrapperProps) {
   });
 
   return (
-    <div style={{ position: 'relative', zIndex: 0 }}>
+    <div
+      style={{
+        position: 'relative',
+        zIndex: 0,
+        backgroundColor: '#edf2f8',
+        height: '100vh',
+      }}
+    >
       <ErrorPopup
         errorType={errorType}
         messages={messagesError}

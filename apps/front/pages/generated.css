@@ -724,10 +724,14 @@
   padding: 0.95rem;
   border: none;
   border-radius: 7px;
-  background-color: var(--primary-color);
   font-family: var(--font-base);
   color: var(--secondary-color);
   outline: none;
+  transition: all 500ms;
+}
+.app__footer-form div input:hover,
+.app__footer-form div textarea:hover {
+  transform: scale(1.01);
 }
 .app__footer-form div textarea {
   height: 170px;
