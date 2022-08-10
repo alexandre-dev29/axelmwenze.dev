@@ -1,23 +1,22 @@
 import { useState } from 'react';
 import { images } from '@next-template-nx/ui';
-import { HiMenuAlt4, HiX } from 'react-icons/hi';
-import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { Dropdown } from '@nextui-org/react';
+import { AiOutlineMenu } from 'react-icons/ai';
 
 /* eslint-disable-next-line */
 export interface NavBarProps {}
 
-const listLinks: Array<{ linkName: string; link: string }> = [
-  { link: '/', linkName: 'Home' },
-  { link: '/about', linkName: 'About' },
-  { link: '/work', linkName: 'Work' },
-  { link: '/skills', linkName: 'Skills' },
-  { link: '/contact', linkName: 'Contact' },
+type MenuItem = { name: string; link: string; key: string };
+const listLinks: Array<MenuItem> = [
+  { link: '/', name: 'Home', key: 'home' },
+  { link: '/about', name: 'About', key: 'about' },
+  { link: '/work', name: 'Work', key: 'work' },
+  { link: '/skills', name: 'Skills', key: 'skills' },
+  { link: '/contact', name: 'Contact', key: 'contact' },
 ];
 
 export function NavBar(props: NavBarProps) {
-  const [toggle, setToggle] = useState(false);
-
   return (
     <nav className="app__navbar">
       <div className="app__navbar-logo">
@@ -30,32 +29,26 @@ export function NavBar(props: NavBarProps) {
           <li className="app__flex p-text" key={index}>
             <div />
             <Link href={`${item.link}`}>
-              <p>{item.linkName}</p>
+              <p>{item.name}</p>
             </Link>
           </li>
         ))}
       </ul>
-
-      <div className="app__navbar-menu">
-        <HiMenuAlt4 onClick={() => setToggle(true)} />
-
-        {toggle && (
-          <motion.div
-            whileInView={{ x: [300, 0] }}
-            transition={{ duration: 0.85, ease: 'easeOut' }}
-          >
-            <HiX onClick={() => setToggle(false)} />
-            <ul>
-              {listLinks.map((item, index) => (
-                <li key={`item-${index}`}>
-                  <Link href={`${item.link}`}>
-                    <p>{item.linkName}</p>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        )}
+      <div className={'app__navbar-menu'}>
+        <Dropdown>
+          <Dropdown.Button flat>
+            <AiOutlineMenu className={'text-xl'} />
+          </Dropdown.Button>
+          <Dropdown.Menu aria-label="Dynamic Actions" items={listLinks}>
+            {(item: any) => (
+              <Dropdown.Item key={item.key} color={'secondary'}>
+                <Link href={`${item.link}`}>
+                  <p>{item.name}</p>
+                </Link>
+              </Dropdown.Item>
+            )}
+          </Dropdown.Menu>
+        </Dropdown>
       </div>
     </nav>
   );
