@@ -3,6 +3,7 @@ import emailJs from '@emailjs/browser';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { ContactHeader, InputComponent } from '@next-template-nx/ui';
+import Head from 'next/head';
 
 /* eslint-disable-next-line */
 export interface ContactProps {}
@@ -54,6 +55,10 @@ export function Contact(props: ContactProps) {
 
   return (
     <div className={'app__footer w-full flex-col py-2 md:py-0 '}>
+      <Head>
+        <title>Axel Mwenze | Contact Me</title>
+        <meta name="description" content="Here you can contact me " />
+      </Head>
       <ContactHeader />
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -88,12 +93,12 @@ export function Contact(props: ContactProps) {
             {...register('message', { required: true })}
           />
           {errors.message && (
-            <span className={'text-red-500 text-sm p-4 mb-4'}>
+            <span className={'text-red-500 text-sm p-4 mb-4 default-police'}>
               The Message is required
             </span>
           )}
         </div>
-        <button type="submit" className="p-text">
+        <button type="submit" className="p-text default-police">
           {!loading ? 'Send me a mail' : 'Sending...'}
         </button>
       </form>

@@ -18,13 +18,15 @@ export function InputComponent({
   return (
     <div className="app__flex">
       <input
-        className="p-text"
+        className="p-text default-police"
         type={inputType}
         placeholder={placeHolder}
         {...register}
       />
       {errorField && (
-        <span className={'text-red-500 text-sm  w-48'}>{errorMsg}</span>
+        <span className={'text-red-500 text-sm default-police  w-48'}>
+          {errorMsg}
+        </span>
       )}
     </div>
   );

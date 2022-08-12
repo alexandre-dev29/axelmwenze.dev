@@ -11,10 +11,18 @@
   --font-base: "DM Sans", sans-serif;
 }
 
+.default-police {
+  font-family: var(--font-base);
+}
+
 .app {
   background-color: var(--primary-color);
   font-family: var(--font-base);
 
+}
+
+.text-secondary {
+  color: var(--secondary-color);
 }
 
 .head-text {

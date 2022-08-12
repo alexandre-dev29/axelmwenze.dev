@@ -1,5 +1,3 @@
-import styles from './default-button.module.scss';
-
 /* eslint-disable-next-line */
 interface DefaultButtonProps {
   textButton: string | undefined;

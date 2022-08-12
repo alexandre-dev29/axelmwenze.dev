@@ -50,13 +50,15 @@ export function WorkCard({ attributes }: WorkCardProps) {
       </div>
 
       <div className="app__work-content app__flex">
-        <h4 className="bold-text">{attributes.Title}</h4>
-        <p className="p-text" style={{ marginTop: 10 }}>
+        <h4 className="bold-text default-police">{attributes.Title}</h4>
+        <p className="p-text default-police" style={{ marginTop: 10 }}>
           {attributes.Description}
         </p>
 
         <div className="app__work-tag app__flex">
-          <p className="p-text">{attributes?.tags?.data[0].attributes.tag}</p>
+          <p className="p-text default-police">
+            {attributes?.tags?.data[0].attributes.tag}
+          </p>
         </div>
       </div>
     </div>
