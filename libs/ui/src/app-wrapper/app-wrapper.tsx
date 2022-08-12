@@ -1,6 +1,5 @@
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import ErrorPopup from '../error-popup/error-popup';
-import Head from 'next/head';
 import { ErrorTypeGraphQl } from '@next-template-nx/data';
 import { useState } from 'react';
 import {
@@ -58,9 +57,6 @@ export function AppWrapper({ children }: AppWrapperProps) {
         onCloseEvent={closeModal}
         openStatus={isOpen}
       />
-      <Head>
-        <title>Welcome The template </title>
-      </Head>
       <NextThemesProvider
         defaultTheme={'system'}
         attribute={'class'}

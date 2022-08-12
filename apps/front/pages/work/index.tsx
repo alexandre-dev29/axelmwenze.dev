@@ -7,6 +7,7 @@ import {
 } from '@next-template-nx/data';
 import { motion } from 'framer-motion';
 import { WorkCard } from '@next-template-nx/ui';
+import Head from 'next/head';
 
 /* eslint-disable-next-line */
 export interface WorkProps {}
@@ -55,6 +56,13 @@ export function Work(props: WorkProps) {
 
   return (
     <div className={'flex-1 w-full flex-col py-4 md:py-8 3xl:py-24'}>
+      <Head>
+        <title>Axel Mwenze | Work</title>
+        <meta
+          name="description"
+          content="Here are some of my projects with links to the code and live project overview"
+        />
+      </Head>
       <h2 className="head-text">
         My <span>Recent</span> Projects
       </h2>

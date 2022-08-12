@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useExperiencesQuery, useSkillsQuery } from '@next-template-nx/data';
 import { Tooltip } from '@nextui-org/react';
 import Image from 'next/image';
+import Head from 'next/head';
 
 /* eslint-disable-next-line */
 export interface SkillsProps {}
@@ -18,6 +19,13 @@ export function Skills(props: SkillsProps) {
 
   return (
     <div className={'flex-1 w-full flex-col py-24'}>
+      <Head>
+        <title>Axel Mwenze | Skills and Work experience</title>
+        <meta
+          name="description"
+          content="Here are some of my skills and work experience"
+        />
+      </Head>
       <h2 className="head-text">Skills & Experiences</h2>
 
       <div className="app__skills-container mx-auto">
