@@ -64,7 +64,7 @@ export function Work(props: WorkProps) {
         />
       </Head>
       <h2 className="head-text">
-        My <span>Recent</span> Projects
+        My <span className={'default-police'}>Recent</span> Projects
       </h2>
 
       <div className="app__work-filter">
@@ -73,7 +73,7 @@ export function Work(props: WorkProps) {
             <div
               key={index}
               onClick={() => handleWorkFilter(item)}
-              className={`app__work-filter-item app__flex p-text ${
+              className={`app__work-filter-item app__flex p-text default-police ${
                 activeFilter === item ? 'item-active' : ''
               }`}
             >
@@ -81,7 +81,7 @@ export function Work(props: WorkProps) {
             </div>
           ))
         ) : (
-          <div>No Tags</div>
+          <div className={'default-police'}>No Tags</div>
         )}
       </div>
 

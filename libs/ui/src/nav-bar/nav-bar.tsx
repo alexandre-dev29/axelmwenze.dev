@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { images } from '@next-template-nx/ui';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Dropdown } from '@nextui-org/react';
 import { AiOutlineMenu } from 'react-icons/ai';
@@ -17,6 +16,11 @@ const listLinks: Array<MenuItem> = [
 ];
 
 export function NavBar(props: NavBarProps) {
+  const [isSSR, setIsSSR] = useState(true);
+  useEffect(() => {
+    setIsSSR(false);
+  }, []);
+
   return (
     <nav className="app__navbar">
       <div className="app__navbar-logo">
@@ -29,26 +33,28 @@ export function NavBar(props: NavBarProps) {
           <li className="app__flex p-text" key={index}>
             <div />
             <Link href={`${item.link}`}>
-              <p>{item.name}</p>
+              <p className={'default-police font-bold'}>{item.name}</p>
             </Link>
           </li>
         ))}
       </ul>
       <div className={'app__navbar-menu'}>
-        <Dropdown>
-          <Dropdown.Button flat>
-            <AiOutlineMenu className={'text-xl'} />
-          </Dropdown.Button>
-          <Dropdown.Menu aria-label="Dynamic Actions" items={listLinks}>
-            {(item: any) => (
-              <Dropdown.Item key={item.key} color={'secondary'}>
-                <Link href={`${item.link}`}>
-                  <p>{item.name}</p>
-                </Link>
-              </Dropdown.Item>
-            )}
-          </Dropdown.Menu>
-        </Dropdown>
+        {!isSSR && (
+          <Dropdown>
+            <Dropdown.Button flat>
+              <AiOutlineMenu className={'text-xl'} />
+            </Dropdown.Button>
+            <Dropdown.Menu aria-label="Dynamic Actions" items={listLinks}>
+              {(item: any) => (
+                <Dropdown.Item key={item.key} color={'secondary'}>
+                  <Link href={`${item.link}`}>
+                    <p className={'font-bold default-police'}>{item.name}</p>
+                  </Link>
+                </Dropdown.Item>
+              )}
+            </Dropdown.Menu>
+          </Dropdown>
+        )}
       </div>
     </nav>
   );

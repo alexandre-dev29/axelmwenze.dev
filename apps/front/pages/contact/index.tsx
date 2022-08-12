@@ -93,12 +93,12 @@ export function Contact(props: ContactProps) {
             {...register('message', { required: true })}
           />
           {errors.message && (
-            <span className={'text-red-500 text-sm p-4 mb-4'}>
+            <span className={'text-red-500 text-sm p-4 mb-4 default-police'}>
               The Message is required
             </span>
           )}
         </div>
-        <button type="submit" className="p-text">
+        <button type="submit" className="p-text default-police">
           {!loading ? 'Send me a mail' : 'Sending...'}
         </button>
       </form>
