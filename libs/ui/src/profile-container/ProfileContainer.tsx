@@ -8,7 +8,7 @@ export interface ProfileContainerProps {
 
 export const ProfileContainer = ({ allAboutData }: ProfileContainerProps) => {
   return (
-    <div className={'flex justify-center items-start flex-wrap mt-10'}>
+    <div className={'flex justify-center items-start flex-wrap xl:mt-10'}>
       {allAboutData.abouts?.data.map(({ id, attributes }, index) => (
         <AboutCard
           key={id}

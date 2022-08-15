@@ -54,7 +54,7 @@ export function Contact(props: ContactProps) {
   };
 
   return (
-    <div className={'app__footer w-full flex-col py-2 md:py-0 '}>
+    <div className={'app__footer w-full flex-col py-2 md:py-0 px-12 lg:px-0 '}>
       <Head>
         <title>Axel Mwenze | Contact Me</title>
         <meta name="description" content="Here you can contact me " />

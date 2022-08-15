@@ -16,7 +16,6 @@
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
-  margin: 2rem auto;
 
   .app__footer-card {
     min-width: 290px;
@@ -25,7 +24,7 @@
     justify-content: flex-start;
     align-items: center;
 
-    margin: 1rem 0rem;
+    margin: 0.5rem 0rem;
     padding: 1rem;
     border-radius: 10px;
     cursor: pointer;
@@ -73,7 +72,6 @@
   div {
     width: 100%;
 
-    margin: 0.75rem 0;
     border-radius: 10px;
     cursor: pointer;
     background-color: var(--primary-color);

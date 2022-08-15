@@ -14,7 +14,9 @@ export function AboutCard({ title, imageUrl, description }: AboutCardProps) {
       whileInView={{ opacity: 1 }}
       whileHover={{ scale: 1.1 }}
       transition={{ duration: 0.5, type: 'tween' }}
-      className={'app__profile-item'}
+      className={
+        'app__profile-item w-[120px] md:w-[190px] xl:w-[220px] m-5 xl:m-12'
+      }
       key={1}
     >
       <Image
@@ -25,10 +27,16 @@ export function AboutCard({ title, imageUrl, description }: AboutCardProps) {
         className={'w-full h-[170px] rounded-sm'}
       />
 
-      <h2 className={'bold-text default-police'} style={{ marginTop: 20 }}>
+      <h2
+        className={'bold-text default-police text-center mx-auto'}
+        style={{ marginTop: 20 }}
+      >
         {title}
       </h2>
-      <p className={'p-text default-police'} style={{ marginTop: 10 }}>
+      <p
+        className={'p-text default-police text-center'}
+        style={{ marginTop: 10, textAlign: 'center' }}
+      >
         {description}
       </p>
     </motion.div>

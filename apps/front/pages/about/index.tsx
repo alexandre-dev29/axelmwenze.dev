@@ -13,7 +13,7 @@ export function About(props: AboutProps) {
     fetchPolicy: 'cache-first',
   });
   return (
-    <div className={'flex-1 w-full flex-col py-24'}>
+    <div className={'flex-1 w-full flex-col py-10 xl:py-24'}>
       <Head>
         <title>Axel Mwenze | About Me</title>
         <meta
@@ -22,9 +22,13 @@ export function About(props: AboutProps) {
          i am specialised in Web application and Mobile using various technologies"
         />
       </Head>
-      <h2 className={'head-text'}>
-        I Know that <span>Good Design</span> <br />
-        means <span>Good Business</span>
+      <h2
+        className={
+          'text-center default-police font-bold text-black capitalize text-2xl lg:text-3xl xl:text-5xl'
+        }
+      >
+        I Know that <span className={'text-secondary'}>Good Design</span> <br />
+        means <span className={'text-secondary'}>Good Business</span>
       </h2>
 
       {loading ? <LoadingState /> : <ProfileContainer allAboutData={data} />}
