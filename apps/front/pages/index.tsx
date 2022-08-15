@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 export function Index() {
   const router = useRouter();
   return (
-    <div className={'flex-1 w-full h-2/4  flex-col py-24'}>
+    <div className={'flex-1 w-full h-2/4  flex-col py-10 md:py-24'}>
       <Head>
         <title>Axel Mwenze | Home</title>
         <meta
@@ -15,28 +15,40 @@ export function Index() {
       </Head>
       <div
         className={
-          'flex justify-start  w-8/12  h-[60vh] items-center p-4 mx-auto'
+          'flex flex-col-reverse lg:flex-row justify-center w-10/12  xl:w-8/12  h-[60vh] items-center p-4 mx-auto'
         }
       >
-        <div className={'flex h-[80%] flex-col justify-between items-start'}>
+        <div
+          className={
+            'flex h-[80%] flex-col justify-between items-center lg:items-start  md:mt-0'
+          }
+        >
           <p
             className={
-              'text-4xl font-bold capitalize text-secondary tracking-wider default-police'
+              'text-lg sm:text-2xl md:text-4xl font-bold capitalize text-secondary tracking-wider default-police'
             }
           >
             welcome I am,
           </p>
-          <h2 className={'text-7xl capitalize text-gray-800 default-police'}>
+          <h2
+            className={
+              'text-4xl sm:text-5xl text-center md:text-left lg:text-7xl capitalize text-gray-800 default-police'
+            }
+          >
             Axel mwenze
           </h2>
           <p
             className={
-              'text-7xl capitalize text-gray-800 font-bold text-secondary default-police'
+              'text-3xl sm:text-5xl text-center lg:text-left lg:text-7xl capitalize text-gray-800 font-bold text-secondary default-police'
             }
           >
             I Build web and mobile application
           </p>
-          <p className={'tracking-widest default-police'}>
+          <p
+            className={
+              'tracking-widest default-police text-sm mt-0 sm:mt-8 md:mt-0 md:text-xl sm:text-2xl '
+            }
+          >
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias
             animi blanditiis, cum deleniti dolores eveniet itaque labore minima
             molestias mollitia neque nobis numquam, placeat quasi rem saepe sit
@@ -49,11 +61,17 @@ export function Index() {
             }}
             isFilled={true}
             isSmall={false}
-            customStyle={'mt-4 default-police'}
+            customStyle={'mt-4 sm:mt-10 md:mt-6 default-police'}
           />
         </div>
 
-        <img src="me.jpeg" alt={'my picture'} className={'profile_image'} />
+        <img
+          src="me.jpeg"
+          alt={'my picture'}
+          className={
+            'profile_image  mb-8  lg:mb-0 w-[100px] lg:w-[300px] lg:h-[300px] sm:w-[120px] sm:w-[120px]'
+          }
+        />
       </div>
     </div>
   );
