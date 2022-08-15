@@ -3,8 +3,10 @@ import { TbMailOpened, TbPhoneCalling } from 'react-icons/tb';
 export function ContactHeader() {
   return (
     <>
-      <h2 className="head-text default-police">Take a coffee & chat with me</h2>
-      <div className="app__footer-cards ">
+      <h2 className="head-text default-police mt-2">
+        Take a coffee <span className={'text-secondary'}>& chat with me</span>
+      </h2>
+      <div className="app__footer-cards my-0 lg:my-12 mx-auto">
         <div className="app__footer-card ">
           <TbMailOpened className={'text-2xl text-blue-500 mr-4'} />
           <a

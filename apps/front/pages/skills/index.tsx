@@ -19,7 +19,7 @@ export function Skills(props: SkillsProps) {
   });
 
   return (
-    <div className={'flex-1 w-full flex-col py-24'}>
+    <div className={'flex-1 w-full flex-col py-8 xl:py-24'}>
       <Head>
         <title>Axel Mwenze | Skills and Work experience</title>
         <meta
@@ -29,7 +29,7 @@ export function Skills(props: SkillsProps) {
       </Head>
       <h2 className="head-text">Skills & Experiences</h2>
 
-      <div className="app__skills-container mx-auto">
+      <div className="app__skills-container mx-auto lg:mt-6 xl:mt-12">
         <motion.div className="app__skills-list">
           {skillsData?.skills?.data.map(({ id, attributes }, index) => (
             <motion.div
@@ -54,7 +54,7 @@ export function Skills(props: SkillsProps) {
             </motion.div>
           ))}
         </motion.div>
-        <div className="app__skills-exp">
+        <div className="app__skills-exp mx-auto">
           {experienceData?.experiences?.data.map(
             ({ id, attributes }, index) => (
               <motion.div className="app__skills-exp-item" key={index}>
