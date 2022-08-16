@@ -12,3 +12,4 @@ export * from './profile-container/ProfileContainer';
 export * from './input-component/InputComponent';
 export * from './contact-header/ContactHeader';
 export * from './default-button/default-button';
+export * from './social-links/social-links';
