@@ -1,15 +1,15 @@
 import { motion } from 'framer-motion';
 import { useExperiencesQuery, useSkillsQuery } from '@next-template-nx/data';
-
 import { Tooltip } from '@nextui-org/react';
 import Image from 'next/image';
 import Head from 'next/head';
+import { LoadingState } from '@next-template-nx/ui';
 
 /* eslint-disable-next-line */
 export interface SkillsProps {}
 
 export function Skills(props: SkillsProps) {
-  const { data: skillsData } = useSkillsQuery({
+  const { loading, data: skillsData } = useSkillsQuery({
     fetchPolicy: 'cache-first',
     errorPolicy: 'all',
   });
@@ -30,30 +30,34 @@ export function Skills(props: SkillsProps) {
       <h2 className="head-text">Skills & Experiences</h2>
 
       <div className="app__skills-container mx-auto lg:mt-6 xl:mt-12">
-        <motion.div className="app__skills-list">
-          {skillsData?.skills?.data.map(({ id, attributes }, index) => (
-            <motion.div
-              whileInView={{ opacity: [0, 1] }}
-              transition={{ duration: 0.5 }}
-              className="app__skills-item app__flex"
-              key={index}
-            >
-              <div
-                className="app__flex"
-                style={{ backgroundColor: attributes.BackgroundColor }}
-                key={`att-${index}`}
+        {loading ? (
+          <LoadingState />
+        ) : (
+          <motion.div className="app__skills-list">
+            {skillsData?.skills?.data.map(({ id, attributes }, index) => (
+              <motion.div
+                whileInView={{ opacity: [0, 1] }}
+                transition={{ duration: 0.5 }}
+                className="app__skills-item app__flex"
+                key={index}
               >
-                <Image
-                  src={attributes.ImageUrl.data.attributes.url}
-                  width={350}
-                  height={300}
-                  alt={attributes.Name}
-                />
-              </div>
-              <p className="p-text default-police">{attributes.Name}</p>
-            </motion.div>
-          ))}
-        </motion.div>
+                <div
+                  className="app__flex"
+                  style={{ backgroundColor: attributes.BackgroundColor }}
+                  key={`att-${index}`}
+                >
+                  <Image
+                    src={attributes.ImageUrl.data.attributes.url}
+                    width={350}
+                    height={300}
+                    alt={attributes.Name}
+                  />
+                </div>
+                <p className="p-text default-police">{attributes.Name}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
         <div className="app__skills-exp mx-auto">
           {experienceData?.experiences?.data.map(
             ({ id, attributes }, index) => (

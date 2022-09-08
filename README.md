@@ -10,7 +10,7 @@ This project was generated using [Nx](https://nx.dev).
 
 ### The overall project description
 
-Theses are different stack used in this project 
+Theses are different stack used in this project
 
 Below are our core plugins:
 
