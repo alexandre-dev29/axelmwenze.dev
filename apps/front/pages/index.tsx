@@ -13,6 +13,7 @@ export function Index() {
           content="Hello welcome to my portfolio,  I am Axel Mwenze, Software developer based in Congo DRC"
         />
       </Head>
+
       <div
         className={
           'flex flex-col-reverse lg:flex-row justify-center w-10/12  xl:w-8/12  h-[60vh] items-center p-4 mx-auto'
@@ -39,20 +40,22 @@ export function Index() {
           </h2>
           <p
             className={
-              'text-3xl sm:text-5xl text-center lg:text-left lg:text-7xl capitalize text-gray-800 font-bold text-secondary default-police'
+              'text-3xl sm:text-4xl md:text-5xl 3xl:text-6xl text-center lg:text-left capitalize text-gray-800 font-bold text-secondary default-police'
             }
           >
             I Build web and mobile application
           </p>
           <p
             className={
-              'tracking-widest default-police text-sm mt-0 sm:mt-8 md:mt-0 md:text-xl sm:text-2xl '
+              'tracking-widest default-police text-sm mt-0 sm:mt-8 md:mt-4 md:text-xl sm:text-2xl text-center md:text-center lg:text-left'
             }
           >
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias
-            animi blanditiis, cum deleniti dolores eveniet itaque labore minima
-            molestias mollitia neque nobis numquam, placeat quasi rem saepe sit
-            vero
+            I am a software engineer,FullStack Web developer and Udemy
+            Instructor.
+            <br />
+            My main Stack are Typescript(Javascript), C#, Flutter and Python.
+            I'm also passionate about Classical music, Opera,Piano Playing,
+            football, TV and I'm a big fan of Japanese anime.
           </p>
           <DefaultButton
             textButton={'Contact Me'}
