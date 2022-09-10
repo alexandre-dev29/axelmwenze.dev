@@ -16,7 +16,7 @@ const listLinks: Array<MenuItem> = [
   { link: '/', name: 'Home', key: 'home', target: '_self' },
   { link: '/about', name: 'Little Information', key: 'about', target: '_self' },
   {
-    link: 'https://www.blog.axelmwenze.dev',
+    link: 'https://blog.axelmwenze.dev/',
     name: 'Blog',
     key: 'blog',
     target: '_blank',
