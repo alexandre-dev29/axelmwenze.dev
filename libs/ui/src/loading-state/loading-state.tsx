@@ -1,4 +1,3 @@
-import styles from './loading-state.module.scss';
 import { motion, Transition } from 'framer-motion';
 
 /* eslint-disable-next-line */
