@@ -3,7 +3,6 @@ import { cn } from "@/lib/utils";
 import {
   Code2Icon,
   InboxIcon,
-  Mailbox,
   MenuIcon,
   User,
   WorkflowIcon,

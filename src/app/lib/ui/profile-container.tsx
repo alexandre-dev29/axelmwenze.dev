@@ -13,7 +13,7 @@ export const ProfileContainer: FC<ProfileContainerProps> = ({ data }) => {
         "grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-3/4 mx-auto "
       }
     >
-      {data.map(({ imageFile, description, title }, index) => (
+      {data.map(({ imageFile, description, title }) => (
         <AboutCard
           key={Math.random()}
           imageUrl={imageFile}
