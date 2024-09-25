@@ -15,7 +15,7 @@ const Page = () => {
     <div className={"flex-1 w-full flex-col py-10 xl:py-12"}>
       <h2
         className={
-          "text-center default-police font-bold text-black capitalize text-2xl lg:text-3xl xl:text-5xl"
+          'text-center default-police font-bold text-black dark:text-gray-200 capitalize text-2xl lg:text-3xl xl:text-5xl'
         }
       >
         I Know that <span className={"text-secondary"}>Good Design</span> <br />

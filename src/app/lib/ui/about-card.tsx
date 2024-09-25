@@ -19,11 +19,11 @@ export function AboutCard({ title, imageUrl, description }: AboutCardProps) {
         alt={title}
         quality={80}
         priority
-        className={" rounded-sm"}
+        className={'rounded-sm w-[400px] h-[300px]'}
       />
 
       <h2
-        className={"font-extrabold  text-center mx-auto"}
+        className="font-extrabold  text-center mx-auto text-[1.2rem]"
         style={{ marginTop: 20 }}
       >
         {title}
