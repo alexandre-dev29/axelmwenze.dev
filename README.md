@@ -1,45 +1,36 @@
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Getting Started
 
-# Frontend Template
+First, run the development server:
 
-This project was generated using [Nx](https://nx.dev).
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-<p style="text-align: center; width: 120px"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-🔎 **Smart, Fast and Extensible Build System**
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-### The overall project description
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-Theses are different stack used in this project
+## Learn More
 
-Below are our core plugins:
+To learn more about Next.js, take a look at the following resources:
 
-- [NextJs](https://nextjs.org/)
-- [TailwindCss](https://tailwindcss.com)
-- [NextUI](https://nextui.org/)
-- [Graphql](https://graphql.org/)
-- [Typescript](https://www.typescriptlang.org/)
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-### Running the project 
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-#### this project was configure to run with [StrapiCms](https://strapi.io/) but you can run it with any graphql server that you want
-  - in `apps/front/` create a .env file using the .env.example structure
-  - in `graphql/Schemas` create your schemas that matches your graphql api
-  - Run 
-    - `yarn install` or 
-    - `npm install`
-  - generate types from Graphql Schemas
-    - ``yarn run codegen``
-  - and then
-    - ``yarn run start``
+## Deploy on Vercel
 
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-## Running unit tests
-
-Run `yarn run test` to execute the unit tests via [Jest](https://jestjs.io).
-
-## Running end-to-end tests
-
-Run `nx e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
