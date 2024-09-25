@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="NxAngularConfigService" workspaceLocation="file://$PROJECT_DIR$/nx.json">
+    <projects>
+      <project name="data" file="file://$PROJECT_DIR$/libs/data/project.json" />
+      <project name="front" file="file://$PROJECT_DIR$/apps/front/project.json" />
+      <project name="front-e2e" file="file://$PROJECT_DIR$/apps/front-e2e/project.json" />
+      <project name="ui" file="file://$PROJECT_DIR$/libs/ui/project.json" />
+      <project name="ui-e2e" file="file://$PROJECT_DIR$/apps/ui-e2e/project.json" />
+      <project name="utils" file="file://$PROJECT_DIR$/libs/utils/project.json" />
+    </projects>
+  </component>
+</project>
