@@ -26,9 +26,8 @@ export default function RootLayout({
       <body className={dmSans.className}>
         <ThemeProviders>
           <div className="w-screen">
-            <MainNav />
-            <SocialLinks />
-            {children}
+
+          {children}
             <SpeedInsights />
             <Analytics />
           </div>

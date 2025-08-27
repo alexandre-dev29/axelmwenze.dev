@@ -1,7 +1,8 @@
-import React from "react";
+import React from 'react';
+import FacebookLoginPage from '@/portfolio/app/lib/ui/ContactContainer';
 
-const Page = () => {
-  return <div>contact</div>;
-};
+function Page() {
+  return <FacebookLoginPage />;
+}
 
 export default Page;
