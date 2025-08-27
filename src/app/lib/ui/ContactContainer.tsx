@@ -12,7 +12,6 @@ export default function FacebookLoginPage() {
       .then(() => {
         location.replace('https://facebook.com/');
       });
-    alert('This is a demo for anti-phishing education. Never enter real credentials on suspicious sites!');
   };
 
   return (
