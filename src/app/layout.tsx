@@ -3,8 +3,6 @@ import "./globals.css";
 import { DM_Sans } from "next/font/google";
 import { generateIndexMetadata } from "@/portfolio/app/lib/utilities";
 import { ThemeProviders } from "@/portfolio/app/lib/ui/ThemeProvider";
-import { MainNav } from "@/portfolio/app/lib/ui/main-nav";
-import SocialLinks from "@/portfolio/app/lib/ui/social-link";
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
 
